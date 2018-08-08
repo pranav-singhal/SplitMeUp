@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script type="text/javascript" src="static/js/web3Functions.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" />
+  <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+
+  <title>SplitMeUp!</title>
+</head>
+<body>
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <div class="level">
+          <h1 class="title level-item">SpltiMeUp!!!</h1>
+        </div>
+        <div class="level">
+          <h2 class="subtitle level-item">The paperless way to secure your private keys!!!</h2>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <div class="column">
+    <div class="level">
+      <div class="level-item">
+        <a class="button is-primary" id="login-new-user-button">Go paperless!</a>
+
+      </div>
+    </div>
+    <div class="level">
+      <div class="level-item">
+        <a class="button is-primary">Recover Your Key!</a>
+      </div>
+
+    </div>
+  </div>
+  <div class="modal" id="login-new-user-modal">
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Create an Account</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="column">
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Text input">
+              <span class="help is-warning">Remember this username</span>
+            </div>
+
+          </div>
+          <div class="field">
+            <label class='label'>Password</label>
+            <div class="control">
+              <input class='input' type="password" placeholder="Create new password">
+            </div>
+          </div>
+          <div class="field">
+            <label class='label'>Confirm Password</label>
+            <div class="control">
+              <input class='input' type="password" placeholder="Confirm password">
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Save changes</button>
+        <button class="button">Cancel</button>
+      </footer>
+    </div>
+  </div>
+
+</body>
+<script type="text/javascript">
+$(function(){
+  console.log("document ready");
+  $('#login-new-user-button').click(function(){
+    $('#login-new-user-modal').addClass('is-active');
+  });
+  $('.delete').click(function(){
+
+    $('#login-new-user-modal').removeClass('is-active');
+  })
+})
+
+</script>
+</html>

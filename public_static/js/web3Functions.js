@@ -1,7 +1,7 @@
 if(!web3){
     alert("Metamask Not Installed");
 }
-
+console.log("hey I works");
 let self = web3.eth.accounts[0];
 let abi = [
     {

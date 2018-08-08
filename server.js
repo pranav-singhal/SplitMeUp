@@ -9,9 +9,13 @@ const telegram = require('./telegramServer.js');
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
+app.use('/static', express.static('public_static'))
 
 app.get('/msg', function (req, res) {
    // TODO for harshit... here we will redirect the webhook and all messages are to be handeled from here
+});
+app.get('/',function(req,res){
+  res.sendFile(__dirname+ '/public_static/views/index.html');
 });
 
 
