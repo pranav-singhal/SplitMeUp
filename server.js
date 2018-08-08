@@ -5,18 +5,24 @@ const bodyParser = require('body-parser');
 const web3Functions = require('./web3Server.js');
 const telegram = require('./telegramServer.js');
 
+// For Socket IO
+var http = require('http');
+var server = http.createServer(app);
+var socket = require('socket.io');
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
-app.use('/static', express.static('public_static'))
+app.use('/', express.static('public_static'));
 
 app.get('/msg', function (req, res) {
    // TODO for harshit... here we will redirect the webhook and all messages are to be handeled from here
 });
-app.get('/',function(req,res){
-  res.sendFile(__dirname+ '/public_static/views/index.html');
-});
+
+// app.get('/',function(req,res){
+//   res.sendFile(__dirname+ '/public_static/views/index.html');
+// });
 
 
 app.post('/requestShards', function (req, res) {
