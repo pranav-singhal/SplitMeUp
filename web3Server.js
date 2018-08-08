@@ -138,22 +138,32 @@ let abi = [
 let VotingContract = web3.eth.contract(abi);
 let contractInstance = VotingContract.at('0xd4ea698dfcdf0addeaae77a2d6584f822738cf66');
 
-
 module.exports = {
   getKeyAndChatids : function (username, callback) {
-    contractInstance.getKeyAndChatidsFromUsername(username, {from : self}, function (err, result) {
-       if(err) throw err;
-       let arr = result.valueOf();
-       let key = arr[0].valueOf();
-       let chatIds = [
-           arr[1].valueOf(),
-           arr[2].valueOf(),
-           arr[3].valueOf(),
-           arr[4].valueOf(),
-           arr[5].valueOf(),
-       ];
-       let contractPiece = arr[6].valueOf();
-       if(callback) callback(key, chatIds, contractPiece);
-    });
+      contractInstance.getKeyAndChatidsFromUsername(username, {from : self}, function (err, result) {
+          if(err) throw err;
+          let arr = result.valueOf();
+          let key = arr[0].valueOf();
+          let chatIds = [
+              arr[1].valueOf(),
+              arr[2].valueOf(),
+              arr[3].valueOf(),
+              arr[4].valueOf(),
+              arr[5].valueOf(),
+          ];
+          let contractPiece = arr[6].valueOf();
+          if(callback) callback(key, chatIds, contractPiece);
+      });
+  },
+
+  releaseFundsForChatid : function (chatId, callback) {
+      contractInstance.sendEarning(chatId, {
+          from: self,
+          gas: 70000,
+          gasPrice: web3.toWei(40,'gwei')
+      }, function (err, hash) {
+          if(err) throw err;
+          if(callback) callback();
+      });
   }
 };

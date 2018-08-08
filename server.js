@@ -5,15 +5,13 @@ const bodyParser = require('body-parser');
 const web3Functions = require('./web3Server.js');
 const telegram = require('./telegramServer.js');
 
-
-
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
 app.get('/msg', function (req, res) {
-   // Webhook for Telegram Messages
+   // TODO for harshit... here we will redirect the webhook and all messages are to be handeled from here
 });
 
 
