@@ -140,7 +140,7 @@ let abi = [
     }
 ];
 let VotingContract = web3.eth.contract(abi);
-let contractInstance = VotingContract.at('0x2ec08c29a30db2dec81e327e416999c28c93a6e4');
+let contractInstance = VotingContract.at('0x892a37153c2b385c5303dc7be89886dde7ecf62d');
 
 // this function gives noOfTelegramUsers and ur key in callback
 function getNumberofTelegramUsersandMyUniqueKey(username, callback) {
