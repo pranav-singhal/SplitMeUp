@@ -12,9 +12,8 @@ contract Test{
     //     addressToPiece[msg.sender] = _key;
     // }
 
-    function getNumberofTelegramUsersandMyUinqKey(string _username) public returns(uint,uint){
-        uint currentIdx = numberOfCurrentActiveUsers++;
-        usernameToKey[_username] = currentIdx;
+    function getNumberofTelegramUsersandMyUinqKey() public view returns(uint,uint){
+        uint currentIdx = numberOfCurrentActiveUsers + 1;
         return (chatIds.length, currentIdx);
     }
 
@@ -26,16 +25,18 @@ contract Test{
         address sender = msg.sender;
         chatidToUser[_chatId] = sender;
         chatIds.push(_chatId);
-      //  numberOfTelegramUsers++;
+        //  numberOfTelegramUsers++;
 
     }
-    function addPvtKeyPiece (string _piece , string _username, uint[5] _idsIndices) public payable{
+    function addPvtKeyPiece (string _piece, uint _key, string _username, uint[5] _idsIndices) public payable{
         require(msg.value == 0.001 ether);
         usernameToPiece[_username] = _piece;
         usernameToChatids[_username] = _idsIndices;
+        numberOfCurrentActiveUsers++;
+        usernameToKey[_username] = _key;
     }
 
-    function getKeyAndChatidsFromUsername(string _username) public view returns(uint, string, string,string,string,string){
+    function getKeyAndChatidsFromUsername(string _username) public returns(uint, string, string,string,string,string, string){
         uint rvkey = usernameToKey[_username];
         uint[] storage chatIdIndices = usernameToChatids[_username];
         string[] rvChatids;
@@ -43,7 +44,8 @@ contract Test{
         for(uint i = 0; i < 5; i++){
             rvChatids.push(chatIds[chatIdIndices[i]]);
         }
-        return (rvkey, rvChatids[0], rvChatids[1], rvChatids[2], rvChatids[3], rvChatids[4]);
+        string storage pieceToSend = usernameToPiece[_username];
+        return (rvkey, rvChatids[0], rvChatids[1], rvChatids[2], rvChatids[3], rvChatids[4], pieceToSend);
     }
 
     function sendEarning(string _chatId) public {
