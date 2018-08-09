@@ -31,11 +31,11 @@ function setupSocket(socket){
 
     socket.on('telegram-register', function (otp) {
         console.log("here inside otp ", otp);
-       telegram.getMeChatidFromOTP(otp, function (id) {
-           if(id){
-               socket.emit('chat-id', id);
-           }
-       });
+        telegram.getMeChatidFromOTP(otp, function (id) {
+            if(id){
+                socket.emit('chat-id', id);
+            }
+        });
     });
 }
 
@@ -55,14 +55,14 @@ app.use('/', express.static('public_static'))
 
 app.post('/msg', function (req, res) {
     // console.log("here");
-   // TODO for harshit... here we will redirect the webhook and all messages are to be handeled from here
+    // TODO for harshit... here we will redirect the webhook and all messages are to be handeled from here
     if(!req.body.message) {
         res.sendStatus(200);
     }
     else {
         if(telegram.checkForFirstMessage(req.body.message)) {
             telegram.firstMessage(req, function () {
-               res.sendStatus(200);
+                res.sendStatus(200);
             });
         }else{
             let id = req.body.message.from.id;

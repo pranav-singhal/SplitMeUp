@@ -1,229 +1,231 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <script type="text/javascript" src="js/web3Functions.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" />
-  <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
-  <script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/preloader.css">
-  <script type="text/javascript" src="js/main.js">
-  </script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="js/socket.js"></script>
-  <title>SplitMeUp!</title>
+    <script type="text/javascript" src="js/web3Functions.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/preloader.css">
+    <script type="text/javascript" src="js/telegramSend.js"></script>
+    <script type="text/javascript" src="js/main.js">
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/socket.js"></script>
+    <title>SplitMeUp!</title>
 </head>
 <body>
-  <section class="hero is-primary">
+<section class="hero is-primary">
     <div class="hero-body">
-      <div class="container">
-        <div class="level">
-          <h1 class="title level-item">Split Me Up!</h1>
+        <div class="container">
+            <div class="level">
+                <h1 class="title level-item">Split Me Up!</h1>
+            </div>
+            <div class="level">
+                <h2 class="subtitle level-item">The paperless way to secure your private keys!!!</h2>
+            </div>
+
         </div>
-        <div class="level">
-          <h2 class="subtitle level-item">The paperless way to secure your private keys!!!</h2>
+    </div>
+</section>
+<div class="column">
+    <div class="level">
+        <div class="level-item">
+            <a class="button is-primary" id="login-new-user-button">Go paperless!</a>
+
+        </div>
+    </div>
+    <div class="level">
+        <div class="level-item">
+            <a class="button is-primary">Recover Your Key!</a>
         </div>
 
-      </div>
-    </div>
-  </section>
-  <div class="column">
-    <div class="level">
-      <div class="level-item">
-        <a class="button is-primary" id="login-new-user-button">Go paperless!</a>
-
-      </div>
     </div>
     <div class="level">
-      <div class="level-item">
-        <a class="button is-primary">Recover Your Key!</a>
-      </div>
+        <div class="level-item">
+            <a class="button is-primary" id="register-tgram-user-button">Register as a Telegram User</a>
+        </div>
 
     </div>
-    <div class="level">
-      <div class="level-item">
-        <a class="button is-primary" id="register-tgram-user-button">Register as a Telegram User</a>
-      </div>
-
-    </div>
-  </div>
-  <div class="modal" id="login-new-user-modal">
+</div>
+<div class="modal" id="login-new-user-modal">
     <div class="modal-card" id="login-new-user-modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Create an Account</p>
-        <button class="delete" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-        <div class="column">
-          <div class="field">
-            <label class="label">Username</label>
-            <div class="control">
-              <input class="input" type="text" id="username" placeholder="Text input">
-              <span class="help is-warning">Remember this username</span>
-            </div>
+        <header class="modal-card-head">
+            <p class="modal-card-title">Create an Account</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <div class="column">
+                <div class="field">
+                    <label class="label">Username</label>
+                    <div class="control">
+                        <input class="input" type="text" id="username" placeholder="Text input">
+                        <span class="help is-warning">Remember this username</span>
+                    </div>
 
-          </div>
-          <div class="field">
-            <label class='label'>Password</label>
-            <div class="control">
-              <input class='input' id="password" type="password" placeholder="Create new password">
-              <span class="help is-warning">We will use this password to encrypt your seed phrase, so choose it wisely!</span>
-              <span class="help is-warning">Relax we at split me up dont save this password anywhere</span>
+                </div>
+                <div class="field">
+                    <label class='label'>Password</label>
+                    <div class="control">
+                        <input class='input' id="password" type="password" placeholder="Create new password">
+                        <span class="help is-warning">We will use this password to encrypt your seed phrase, so choose it wisely!</span>
+                        <span class="help is-warning">Relax we at split me up dont save this password anywhere</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class='label'>Confirm Password</label>
+                    <div class="control">
+                        <input class='input' type="password" placeholder="Confirm password">
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="field">
-            <label class='label'>Confirm Password</label>
-            <div class="control">
-              <input class='input' type="password" placeholder="Confirm password">
-            </div>
-          </div>
-        </div>
-      </section>
-      <footer class="modal-card-foot">
-        <button class="button is-success" id="create-account">Create Account</button>
-        <button class="button close-modal" >Cancel</button>
-      </footer>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" id="create-account">Create Account</button>
+            <button class="button close-modal" >Cancel</button>
+        </footer>
     </div>
     <div class="modal-card hide" id="enter-seed-phrase">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Let the Splitting Begin</p>
-        <button class="delete" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-        <div class="column">
-          <h3 class="subtitle">Enter Your seed Phrase</h3>
-          <p class="is-size-4	"> Enter the seed phrase that you use to generate your private key...
-            Don't worry, we at 'Split me Up' promise not to see or store your key or the password
-            you just entered anywhere with us.(You can check you terms and agreement and the code on
-            our app.)
-          </p>
+        <header class="modal-card-head">
+            <p class="modal-card-title">Let the Splitting Begin</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <div class="column">
+                <h3 class="subtitle">Enter Your seed Phrase</h3>
+                <p class="is-size-4	"> Enter the seed phrase that you use to generate your private key...
+                    Don't worry, we at 'Split me Up' promise not to see or store your key or the password
+                    you just entered anywhere with us.(You can check you terms and agreement and the code on
+                    our app.)
+                </p>
 
 
-              <textarea class="textarea" name="name" id="seed-phrase" placeholder="Enter Seed Phrase" value=" ">
+                <textarea class="textarea" name="name" id="seed-phrase" placeholder="Enter Seed Phrase" value=" ">
               </textarea>
-              <button class="button is-success" id="create-piece-button">Create Pieces!</button>
+                <button class="button is-success" id="create-piece-button">Create Pieces!</button>
 
 
 
 
 
 
-        </div>
-      </section>
+            </div>
+        </section>
     </div>
 
     <div class="preloader loading hide">
-      <span class="slice"></span>
-      <span class="slice"></span>
-      <span class="slice"></span>
-      <span class="slice"></span>
-      <span class="slice"></span>
-      <span class="slice"></span>
+        <span class="slice"></span>
+        <span class="slice"></span>
+        <span class="slice"></span>
+        <span class="slice"></span>
+        <span class="slice"></span>
+        <span class="slice"></span>
     </div>
-  </div>
-  <div class="modal" id="tgram-register-modal">
+</div>
+<div class="modal" id="tgram-register-modal">
     <div class="modal-card" id="tgram-register-modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Connect To Our Tgram Network</p>
+        <header class="modal-card-head">
+            <p class="modal-card-title">Connect To Our Tgram Network</p>
 
-      </header>
-      <section class="modal-card-body">
-        <a href="http://telegram.me/BabyGotHack_Bot" target="_blank" id="tgram-link"> @SplitMeUp </a>
+        </header>
+        <section class="modal-card-body">
+            <a href="http://telegram.me/BabyGotHack_Bot" target="_blank" id="tgram-link"> @SplitMeUp </a>
 
-          <div class="field hide" id="tgram-otp-field">
-            <label class="label">Otp</label>
-            <div class="control">
-              <input class="input" type="number" id="otp" placeholder="Enter OTP">
-              <button class="button is-success" id="verify-otp-button">Verify OTP</button>
+            <div class="field hide" id="tgram-otp-field">
+                <label class="label">Otp</label>
+                <div class="control">
+                    <input class="input" type="number" id="otp" placeholder="Enter OTP">
+                    <button class="button is-success" id="verify-otp-button">Verify OTP</button>
+
+                </div>
 
             </div>
 
-          </div>
-
-      </section>
+        </section>
     </div>
-  </div>
+</div>
 
 
 </body>
 <script type="text/javascript">
-password ='';
-username - '';
+    password ='';
+    username - '';
 
-$(function(){
-  console.log("document ready");
-  $('#login-new-user-button').click(function(){
-    $('#login-new-user-modal').addClass('is-active');
-  });
-  $('.delete').click(function(){
+    $(function(){
+        console.log("document ready");
+        $('#login-new-user-button').click(function(){
+            $('#login-new-user-modal').addClass('is-active');
+        });
+        $('.delete').click(function(){
 
-    $('#login-new-user-modal').removeClass('is-active');
-  })
-  $('.close-modal').click(function(){
-    $('#login-new-user-modal').removeClass('is-active');
-  })
-  $('#register-tgram-user-button').click(function(){
-      $('#tgram-register-modal').addClass('is-active');
-  });
-})
-$('#tgram-link').click(function(){
-  $('#tgram-otp-field').removeClass('hide');
+            $('#login-new-user-modal').removeClass('is-active');
+        })
+        $('.close-modal').click(function(){
+            $('#login-new-user-modal').removeClass('is-active');
+        })
+        $('#register-tgram-user-button').click(function(){
+            $('#tgram-register-modal').addClass('is-active');
+        });
+    })
+    $('#tgram-link').click(function(){
+        $('#tgram-otp-field').removeClass('hide');
 
 
-});
-$('#verify-otp-button').click(function(){
-  let otp = $('#otp').val();
-  sendOTP(otp,function(chatID){
-    addTelegramUserToContract(chatID,function(bool){
-      if(bool){
-        console.log("chatid saved to contract");
-      }
     });
-  });
+    $('#verify-otp-button').click(function(){
+        let otp = $('#otp').val();
+        sendOTP(otp,function(chatID){
+            addTelegramUserToContract(chatID,function(bool){
+                if(bool){
+                    sendWelcomeMessage(chatID);
+                    console.log("chatid saved to contract");
+                }
+            });
+        });
 
-})
-$('#create-account').click(function(){
-  username = $('#username').val();
-  data ={
-    username: username
-  }
-  // send username to backend code goes here
-  password = $('#password').val();
-  $('#login-new-user-modal-card').addClass('hide');
-  $('#enter-seed-phrase').removeClass('hide');
-})
-$('#create-piece-button').click(function(){
-  $('.preloader').removeClass('hide');
-  $(this).attr('disabled','disabled');
-  $('#seed-phrase').attr('disabled','disabled');
-  $(this).html('Encrypting your key...');
-  var seed_phrase = $('#seed-phrase').val();
-  window.menmonicToSSS(seed_phrase,9,3,password).then(function(){
-    console.log("inside the promise");
-    $('#create-piece-button').html('Encryption Successfull!!');
-    getNumberofTelegramUsersandMyUniqueKey(function(noOfTelegramUsers, key){
-      console.log(noOfTelegramUsers);
-      console.log(key);
+    })
+    $('#create-account').click(function(){
+        username = $('#username').val();
+        data ={
+            username: username
+        }
+        // send username to backend code goes here
+        password = $('#password').val();
+        $('#login-new-user-modal-card').addClass('hide');
+        $('#enter-seed-phrase').removeClass('hide');
+    })
+    $('#create-piece-button').click(function(){
+        $('.preloader').removeClass('hide');
+        $(this).attr('disabled','disabled');
+        $('#seed-phrase').attr('disabled','disabled');
+        $(this).html('Encrypting your key...');
+        var seed_phrase = $('#seed-phrase').val();
+        window.menmonicToSSS(seed_phrase,9,3,password).then(function(){
+            console.log("inside the promise");
+            $('#create-piece-button').html('Encryption Successfull!!');
+            getNumberofTelegramUsersandMyUniqueKey(function(noOfTelegramUsers, key){
+                console.log(noOfTelegramUsers);
+                console.log(key);
+            });
+        });
+
+        // $(this).html('Sending your Key to Users...');
+        // telegram code goes here
+
+
     });
-  });
-
-  // $(this).html('Sending your Key to Users...');
-  // telegram code goes here
-
-
-});
 
 
 </script>
 
 <style media="screen">
-  .hide{
-    display: none !important;
-  }
+    .hide{
+        display: none !important;
+    }
 </style>
 </html>

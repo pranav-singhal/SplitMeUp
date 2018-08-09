@@ -3,7 +3,6 @@ var socket = io();
 function requestPieces(username) {
     socket.emit('requestShards', username);
 }
-
 function sendOTP(otp, callback){
     console.log(otp);
     socket.emit('telegram-register', otp);

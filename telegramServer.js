@@ -102,8 +102,8 @@ module.exports = {
             // let name = element.name;
             let id = element.id;
             // let url = randomURL + "/" + address;
-            self.sendMessage(id, "Congrats! Registered with Split Me Up!! Now You will start getting " +
-                "Key-Value Pairs Store them and get a chance to earn cryptos!!");
+            // self.sendMessage(id, "Congrats! Registered with Split Me Up!! Now You will start getting " +
+            //     "Key-Value Pairs Store them and get a chance to earn cryptos!!");
             if (callback) callback(id);
             else {
                 if (callback) callback(false);
