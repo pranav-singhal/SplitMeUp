@@ -7,28 +7,6 @@ let abi = [
         "constant": false,
         "inputs": [
             {
-                "name": "_piece",
-                "type": "string"
-            },
-            {
-                "name": "_username",
-                "type": "string"
-            },
-            {
-                "name": "_idsIndices",
-                "type": "uint256[5]"
-            }
-        ],
-        "name": "addPvtKeyPiece",
-        "outputs": [],
-        "payable": true,
-        "stateMutability": "payable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
                 "name": "_chatId",
                 "type": "string"
             }
@@ -40,13 +18,8 @@ let abi = [
         "type": "function"
     },
     {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_username",
-                "type": "string"
-            }
-        ],
+        "constant": true,
+        "inputs": [],
         "name": "getNumberofTelegramUsersandMyUinqKey",
         "outputs": [
             {
@@ -59,7 +32,7 @@ let abi = [
             }
         ],
         "payable": false,
-        "stateMutability": "nonpayable",
+        "stateMutability": "view",
         "type": "function"
     },
     {
@@ -74,6 +47,51 @@ let abi = [
         "outputs": [],
         "payable": false,
         "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_i",
+                "type": "uint256"
+            }
+        ],
+        "name": "getTelegramUserId",
+        "outputs": [
+            {
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_piece",
+                "type": "string"
+            },
+            {
+                "name": "_key",
+                "type": "uint256"
+            },
+            {
+                "name": "_username",
+                "type": "string"
+            },
+            {
+                "name": "_idsIndices",
+                "type": "uint256[5]"
+            }
+        ],
+        "name": "addPvtKeyPiece",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
         "type": "function"
     },
     {
@@ -109,22 +127,7 @@ let abi = [
             {
                 "name": "",
                 "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "_i",
-                "type": "uint256"
-            }
-        ],
-        "name": "getTelegramUserId",
-        "outputs": [
+            },
             {
                 "name": "",
                 "type": "string"
@@ -136,7 +139,7 @@ let abi = [
     }
 ];
 let VotingContract = web3.eth.contract(abi);
-let contractInstance = VotingContract.at('0xd4ea698dfcdf0addeaae77a2d6584f822738cf66');
+let contractInstance = VotingContract.at('0x892a37153c2b385c5303dc7be89886dde7ecf62d');
 
 module.exports = {
   getKeyAndChatids : function (username, callback) {
