@@ -45,6 +45,12 @@
       </div>
 
     </div>
+    <div class="level">
+      <div class="level-item">
+        <a class="button is-primary" id="register-tgram-user-button">Register as a Telegram User</a>
+      </div>
+
+    </div>
   </div>
   <div class="modal" id="login-new-user-modal">
     <div class="modal-card" id="login-new-user-modal-card">
@@ -120,12 +126,34 @@
       <span class="slice"></span>
     </div>
   </div>
+  <div class="modal" id="tgram-register-modal">
+    <div class="modal-card" id="tgram-register-modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Connect To Our Tgram Network</p>
+
+      </header>
+      <section class="modal-card-body">
+        <a href="http://telegram.me/BabyGotHack_Bot" target="_blank" id="tgram-link"> @SplitMeUp </a>
+
+          <div class="field hide" id="tgram-otp-field">
+            <label class="label">Otp</label>
+            <div class="control">
+              <input class="input" type="number" id="otp" placeholder="Enter OTP">
+
+            </div>
+
+          </div>
+
+      </section>
+    </div>
+  </div>
 
 
 </body>
 <script type="text/javascript">
 password ='';
 username - '';
+
 $(function(){
   console.log("document ready");
   $('#login-new-user-button').click(function(){
@@ -138,7 +166,14 @@ $(function(){
   $('.close-modal').click(function(){
     $('#login-new-user-modal').removeClass('is-active');
   })
+  $('#register-tgram-user-button').click(function(){
+      $('#tgram-register-modal').addClass('is-active');
+  });
 })
+$('#tgram-link').click(function(){
+  $('#tgram-otp-field').removeClass('hide')
+
+});
 $('#create-account').click(function(){
   username = $('#username').val();
   data ={

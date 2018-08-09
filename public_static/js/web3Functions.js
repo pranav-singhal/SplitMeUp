@@ -151,7 +151,7 @@ function getNumberofTelegramUsersandMyUniqueKey(callback) {
         let arr = result.valueOf();
         let noOfTelegramUsers = arr[0].valueOf();
         let key = arr[1].valueOf();
-        console.log(arr);
+        console.log('arr');
         if(callback) callback(noOfTelegramUsers, key);
     });
 }
