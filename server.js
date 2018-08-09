@@ -35,18 +35,23 @@ app.get('/msg', function (req, res) {
         if(key_shard_map[key] == null)
         {
           key_shard_map[key] = [shard] ;
+          telegram.FirstTwoKeyReceived( "Thankyou . Please wait until user verify the shard . This might take some time"  ,  id , function () {} )
+
         }
         else
         {
           if(key_shard_map[key].length == 2)
           {
-            telegram.FirstTwoKeyReceived(id , function () {} )
+            telegram.FirstTwoKeyReceived( "Sorry the contest ended. Better luck next time"  ,  id , function () {} )
           }
           else
           {
             let shard_arr = key_shard_map[key] ;
             shard_arr.push(shard) ;
             key_shard_map[key] = shard_arr  ;
+
+            telegram.FirstTwoKeyReceived( "Thankyou . Please wait until user verify the shard . This might take some time"  ,  id , function () {} )
+
 
 
             // TODO 2 keys received .. send to web3 ... frontend

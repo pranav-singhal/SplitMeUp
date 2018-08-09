@@ -26,16 +26,15 @@ module.exports = {
       }
   },
 
-  FirstTwoKeyReceived : function FirstTwoKeyReceived( chatId, callback) {
+  FirstTwoKeyReceived : function FirstTwoKeyReceived(msg ,  chatId, callback) {
     // sending contentest ended after receiving first two message for a key
 
       let url = 'https://api.telegram.org/bot' + this.token_id + '/sendMessage';
-      let text = "Sorry the content ended. Better luck next time" ;
 
               axios.get(url, {
                 params : {
                     chat_id : chatId,
-                    text : text,
+                    text : msg,
                 }
             }).then(function (response) {
                 if(callback) callback(true);
