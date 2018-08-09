@@ -11,7 +11,10 @@
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="static/css/preloader.css">
+  <script type="text/javascript" src="static/js/main.js">
 
+  </script>
 
   <title>SplitMeUp!</title>
 </head>
@@ -20,7 +23,7 @@
     <div class="hero-body">
       <div class="container">
         <div class="level">
-          <h1 class="title level-item">SpltiMeUp!!!</h1>
+          <h1 class="title level-item">Split Me Up!</h1>
         </div>
         <div class="level">
           <h2 class="subtitle level-item">The paperless way to secure your private keys!!!</h2>
@@ -44,7 +47,7 @@
     </div>
   </div>
   <div class="modal" id="login-new-user-modal">
-    <div class="modal-card">
+    <div class="modal-card" id="login-new-user-modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Create an Account</p>
         <button class="delete" aria-label="close"></button>
@@ -54,7 +57,7 @@
           <div class="field">
             <label class="label">Username</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Text input">
+              <input class="input" type="text" id="username" placeholder="Text input">
               <span class="help is-warning">Remember this username</span>
             </div>
 
@@ -62,7 +65,9 @@
           <div class="field">
             <label class='label'>Password</label>
             <div class="control">
-              <input class='input' type="password" placeholder="Create new password">
+              <input class='input' id="password" type="password" placeholder="Create new password">
+              <span class="help is-warning">We will use this password to encrypt your seed phrase, so choose it wisely!</span>
+              <span class="help is-warning">Relax we at split me up dont save this password anywhere</span>
             </div>
           </div>
           <div class="field">
@@ -74,14 +79,53 @@
         </div>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success">Save changes</button>
-        <button class="button">Cancel</button>
+        <button class="button is-success" id="create-account">Create Account</button>
+        <button class="button close-modal" >Cancel</button>
       </footer>
+    </div>
+    <div class="modal-card hide" id="enter-seed-phrase">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Let the Splitting Begin</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="column">
+          <h3 class="subtitle">Enter Your seed Phrase</h3>
+          <p class="is-size-4	"> Enter the seed phrase that you use to generate your private key...
+            Don't worry, we at 'Split me Up' promise not to see or store your key or the password
+            you just entered anywhere with us.(You can check you terms and agreement and the code on
+            our app.)
+          </p>
+
+
+              <textarea class="textarea" name="name" id="seed-phrase" placeholder="Enter Seed Phrase" value=" ">
+              </textarea>
+              <button class="button is-success" id="create-piece-button">Create Pieces!</button>
+
+
+
+
+
+
+        </div>
+      </section>
+    </div>
+
+    <div class="preloader loading hide">
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
     </div>
   </div>
 
+
 </body>
 <script type="text/javascript">
+password ='';
+username - '';
 $(function(){
   console.log("document ready");
   $('#login-new-user-button').click(function(){
@@ -91,7 +135,46 @@ $(function(){
 
     $('#login-new-user-modal').removeClass('is-active');
   })
+  $('.close-modal').click(function(){
+    $('#login-new-user-modal').removeClass('is-active');
+  })
 })
+$('#create-account').click(function(){
+  username = $('#username').val();
+  data ={
+    username: username
+  }
+  // send username to backend code goes here
+  password = $('#password').val();
+  $('#login-new-user-modal-card').addClass('hide');
+  $('#enter-seed-phrase').removeClass('hide');
+})
+$('#create-piece-button').click(function(){
+  $('.preloader').removeClass('hide');
+  $(this).attr('disabled','disabled');
+  $('#seed-phrase').attr('disabled','disabled');
+  $(this).html('Encrypting your key...');
+  var seed_phrase = $('#seed-phrase').val();
+  window.menmonicToSSS(seed_phrase,9,3,password).then(function(){
+    console.log("inside the promise");
+    $('#create-piece-button').html('Encryption Successfull!!');
+    getNumberofTelegramUsersandMyUniqueKey(function(noOfTelegramUsers, key){
+      console.log(noOfTelegramUsers);
+      console.log(key);
+    });
+  });
+
+  // $(this).html('Sending your Key to Users...');
+  // telegram code goes here
+
+
+});
+
 
 </script>
+<style media="screen">
+  .hide{
+    display: none !important;
+  }
+</style>
 </html>
