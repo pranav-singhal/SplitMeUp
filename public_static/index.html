@@ -13,7 +13,6 @@
   crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/preloader.css">
   <script type="text/javascript" src="js/main.js">
-
   </script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/socket.js"></script>
@@ -178,7 +177,7 @@ $('#tgram-link').click(function(){
 
 });
 $('#verify-otp-button').click(function(){
-  otp = $('#tgram-otp-field').val();
+  let otp = $('#otp').val();
   sendOTP(otp,function(chatID){
     addTelegramUserToContract(chatID,function(bool){
       if(bool){

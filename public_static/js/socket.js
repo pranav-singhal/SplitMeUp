@@ -5,6 +5,7 @@ function requestPieces(username) {
 }
 
 function sendOTP(otp, callback){
+    console.log(otp);
     socket.emit('telegram-register', otp);
     socket.on('chat-id', function (chatid) {
         if(callback) callback(chatid);

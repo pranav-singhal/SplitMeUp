@@ -28,7 +28,9 @@ function setupSocket(socket){
             });
         });
     });
+
     socket.on('telegram-register', function (otp) {
+        console.log("here inside otp ", otp);
        telegram.getMeChatidFromOTP(otp, function (id) {
            if(id){
                socket.emit('chat-id', id);

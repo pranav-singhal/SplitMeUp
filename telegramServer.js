@@ -98,7 +98,7 @@ module.exports = {
             return ele.otp == otp;
         });
         if (idx >= 0) {
-            let element = otpArray.splice(idx, 1)[0];
+            let element = self.otpArray.splice(idx, 1)[0];
             // let name = element.name;
             let id = element.id;
             // let url = randomURL + "/" + address;
