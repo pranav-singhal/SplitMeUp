@@ -8,6 +8,7 @@
     "build": "browserify build.js -o public_static/js/main.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bip39": "^2.5.0",
     "body-parser": "^1.18.3",
     "browserify": "^16.2.2",
