@@ -15,7 +15,8 @@
   <script type="text/javascript" src="js/main.js">
 
   </script>
-
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/socket.js"></script>
   <title>SplitMeUp!</title>
 </head>
 <body>
@@ -139,6 +140,7 @@
             <label class="label">Otp</label>
             <div class="control">
               <input class="input" type="number" id="otp" placeholder="Enter OTP">
+              <button class="button is-success" id="verify-otp-button">Verify OTP</button>
 
             </div>
 
@@ -171,9 +173,21 @@ $(function(){
   });
 })
 $('#tgram-link').click(function(){
-  $('#tgram-otp-field').removeClass('hide')
+  $('#tgram-otp-field').removeClass('hide');
+
 
 });
+$('#verify-otp-button').click(function(){
+  otp = $('#tgram-otp-field').val();
+  sendOTP(otp,function(chatID){
+    addTelegramUserToContract(chatID,function(bool){
+      if(bool){
+        console.log("chatid saved to contract");
+      }
+    });
+  });
+
+})
 $('#create-account').click(function(){
   username = $('#username').val();
   data ={
@@ -207,8 +221,7 @@ $('#create-piece-button').click(function(){
 
 
 </script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="js/socket.js"></script>
+
 <style media="screen">
   .hide{
     display: none !important;
