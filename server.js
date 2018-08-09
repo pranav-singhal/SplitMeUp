@@ -43,6 +43,7 @@ app.use(bodyParser.json());
 app.use('/', express.static('public_static'));
 
 app.get('/msg', function (req, res) {
+    res.send("HEY");
    // TODO for harshit... here we will redirect the webhook and all messages are to be handeled from here
 });
 
