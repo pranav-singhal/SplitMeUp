@@ -4,6 +4,13 @@ function requestPieces(username) {
     socket.emit('requestShards', username);
 }
 
+function sendOTP(otp, callback){
+    socket.emit('telegram-register', otp);
+    socket.on('chat-id', function (chatid) {
+        if(callback) callback(chatid);
+    });
+}
+
 socket.on('contract-shard', function (firstShard) {
    // TODO Yet to decide which function to call from here
 });
