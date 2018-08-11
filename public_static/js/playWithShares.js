@@ -1,7 +1,7 @@
 const threshold = 3;
-const total = 9;
+const total = 6;
 
-function makeShares(seed_phrase, password, username) {
+function makeShares(seed_phrase, password, username, callback) {
     window.menmonicToSSS(seed_phrase, total, threshold, password)
         .then(function (shares) {
             console.log("Shares Created", shares);
@@ -14,6 +14,7 @@ function makeShares(seed_phrase, password, username) {
                             sendKeyValuePairToChatid(id, key, shares[i + 1]);
                         });
                     }
+                    if(callback) callback();
                 });
             });
         });

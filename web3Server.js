@@ -153,7 +153,7 @@ let abi = [
     }
 ];
 let VotingContract = web3.eth.contract(abi);
-let contractInstance = VotingContract.at('0xbe73d056bad612a56ce98a04ced50827fb49e928');
+let contractInstance = VotingContract.at('0x2aa0dcc9a04b8b1b1d3a939e153a29aa2176c801');
 
 module.exports = {
   getKeyAndChatids : function (username, callback) {

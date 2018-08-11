@@ -1,4 +1,4 @@
-var socket = io('http://localhost:8080');
+var socket = io();
 
 function requestPieces(username, callback) {
     socket.emit('requestShards', username);
