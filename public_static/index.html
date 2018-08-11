@@ -40,7 +40,7 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ullamcorper neque. Aliquam lacinia sit amet mauris ac commodo. Sed in odio vel arcu pharetra suscipit. Etiam vitae ornare tellus. Maecenas nulla ipsum, aliquam in nisl id, tristique auctor nibh. Integer augue purus, egestas a fringilla ac, lacinia nec ligula. Duis vitae lacinia dolor. In hac habitasse platea dictumst. Maecenas consequat congue commodo. Pellentesque vitae vehicula diam. Morbi arcu lorem, faucibus id faucibus ut, aliquam eget enim.
       </div>
         <div class="level-item">
-            <a class="button is-primary main-working-button">Recover Your Key!</a>
+            <a class="button is-primary main-working-button" id="recover-your-key-idd">Recover Your Key!</a>
         </div>
 
     </div>
@@ -162,6 +162,18 @@
 </div>
 
 
+<div class="recover-your-key">
+  <h1>Recover Your Key</h1>
+  <label class="label">Username</label>
+  <input class="input" id="account_recover_name" placeholder="Enter Username">
+  <label class="label">Password</label>
+  <input class="input" id="account_recover_password" placeholder="Enter Password">
+  <button class="button is-success" id="recover-button">Recover Key</button>
+
+
+</div>
+
+
 </body>
 <script type="text/javascript" src="js/playWithShares.js"></script>
 <script type="text/javascript">
@@ -170,23 +182,28 @@
 
     $(function(){
         console.log("document ready");
+
+        $('#recover-your-key-idd').click(function(){
+          $('.recover-your-key')[0].style.display = "block" ;
+        });
+
         $('#login-new-user-button').click(function(){
             $('#login-new-user-modal').addClass('is-active');
         });
         $('.main-working-button').click(function(){
-            $('.card-container-column')[0].style.visibility = "hidden";
+            $('.card-container-column')[0].style.display = "none";
         });
 
 
         $('.delete').click(function(){
 
             $('#login-new-user-modal').removeClass('is-active');
-            $('.card-container-column')[0].style.visibility = "visible";
+            $('.card-container-column')[0].style.display = "";
 
         })
         $('.close-modal').click(function(){
             $('#login-new-user-modal').removeClass('is-active');
-            $('.card-container-column')[0].style.visibility = "visible";
+            $('.card-container-column')[0].style.display = "";
 
         })
         $('#register-tgram-user-button').click(function(){
@@ -299,6 +316,13 @@
         background-color: #8de6d1 ;
         font-size: 1em;
 
+    }
+
+
+
+    .recover-your-key
+    {
+      display: none ;
     }
 
 
