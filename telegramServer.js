@@ -20,7 +20,6 @@ module.exports = {
     },
 
     sendKeyToRetrieve: function sendKeyToRetrieve(key, chatIds, callback) {
-        // TODO write the code here to send all the chatIds the key so that they can send their respective shards
 
         let url = 'https://api.telegram.org/bot' + this.token_id + '/sendMessage';
         let request_text = "Please send the shard corresponding to the key : " + key + ". Please reply in the following format 'key : shard''";

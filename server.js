@@ -75,7 +75,10 @@ app.post('/msg', function (req, res) {
             }
             else {
                 if(key_shard_map[key].length == 2) {
-                    telegram.FirstTwoKeyReceived(id , function () {} )
+                    telegram.FirstTwoKeyReceived(  "Sorry you are late. Better luck time" ,  id , function ()
+                    {
+                      res.sendStatus(200)
+                    } );
                 }
                 else {
                     let shard_arr = key_shard_map[key] ;
