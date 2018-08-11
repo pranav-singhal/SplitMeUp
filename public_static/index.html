@@ -144,26 +144,30 @@
         <span class="slice"></span>
     </div>
 </div>
-<div class="modal" id="tgram-register-modal">
+<div class="custom-account-become-a-part" id="tgram-register-modal">
     <div class="modal-card" id="tgram-register-modal-card">
         <!-- <header class="modal-card-head"> -->
-            <p class="modal-card-title">Connect To Our Tgram Network</p>
-
+            <p class="modal-card-title"><b>Connect To Our Tgram Network</b></p>
+            <hr><hr><hr>
+            <br>
         <!-- </header> -->
-        <section class="modal-card-body">
+        <!-- <section class="modal-card-body"> -->
             <a href="http://telegram.me/BabyGotHack_Bot" target="_blank" id="tgram-link"> @SplitMeUp </a>
 
             <div class="field hide" id="tgram-otp-field">
+              <br>
                 <label class="label">Otp</label>
                 <div class="control">
-                    <input class="input" type="number" id="otp" placeholder="Enter OTP">
+                    <input class="input" type="number" id="otp" placeholder="Enter OTP"><br>
+                    <br>
                     <button class="button is-success" id="verify-otp-button">Verify OTP</button>
+                    <br>
 
                 </div>
 
             </div>
 
-        </section>
+        <!-- </section> -->
     </div>
 </div>
 
@@ -219,6 +223,7 @@
         })
         $('#register-tgram-user-button').click(function(){
             $('#tgram-register-modal').addClass('is-active');
+            $('.custom-account-become-a-part')[0].style.display = "block" ;
         });
     })
     $('#tgram-link').click(function(){
@@ -343,7 +348,7 @@
 
 
 
-    .recover-your-key , .custom-account
+    .recover-your-key , .custom-account , .custom-account-become-a-part
     {
       display: none ;
       padding: 20px;
@@ -356,11 +361,18 @@
     .recover-your-key h1{
       font-size: 1.5em;
     }
+
+    .custom-account-become-a-part hr
+    {
+      margin-top: 2px;
+      margin-bottom: 2px;
+
+    }
+
     .recover-your-key hr{
 
         margin-top: 2px;
         margin-bottom: 2px;
-        background-color: rgba(175 , 206 , 208 , 0.61);
       }
 
       .recover-your-key label
