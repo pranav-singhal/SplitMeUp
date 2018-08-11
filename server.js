@@ -21,6 +21,7 @@ io.on('connection', function (socket) {
 
 function setupSocket(socket){
     socket.on('requestShards', function (username) {
+      console.log('inside requestShards');
         web3Functions.getKeyAndChatids(username, function (key, chatIds, contractPiece) {
             socket.emit('contract-shard' , contractPiece);
             telegram.sendKeyToRetrieve(key, chatIds, function () {
@@ -29,6 +30,7 @@ function setupSocket(socket){
         });
     });
     socket.on('telegram-register', function (otp) {
+      console.log('inside telegra register');
        telegram.getMeChatidFromOTP(otp, function (id) {
            if(id){
                socket.emit('chat-id', id);
