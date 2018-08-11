@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const web3Functions = require('./web3Server.js');
 const telegram = require('./telegramServer.js');
 
-let key_shard_map = new Object() ;
+let key_shard_map = new Map() ;
 
 // For Socket IO
 const http = require('http');
@@ -21,10 +21,12 @@ io.on('connection', function (socket) {
 
 function setupSocket(socket){
     socket.on('requestShards', function (username) {
+        console.log("Requested");
         web3Functions.getKeyAndChatids(username, function (key, chatIds, contractPiece) {
             socket.emit('contract-shard' , contractPiece);
             telegram.sendKeyToRetrieve(key, chatIds, function () {
                 keyToSocket.set(key, socket);
+                // console.log(keyToSocket);
             });
         });
     });
@@ -39,13 +41,13 @@ function setupSocket(socket){
     });
 }
 
-module.exports = {
-    shardsReceived : function (key, shard1, shard2) {
-        let socket = keyToSocket.get(key);
-        let objToSend = [shard1, shard2];
-        socket.emit('telegram-shards', objToSend);
-    }
-};
+
+function shardReceived(key, shard1, shard2) {
+    console.log("shards \n \n", shard1, shard2);
+    let socket = keyToSocket.get(key);
+    let objToSend = [shard1, shard2];
+    socket.emit('telegram-shards', objToSend);
+}
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -55,39 +57,44 @@ app.use('/', express.static('public_static'))
 
 app.post('/msg', function (req, res) {
     // console.log("here");
-    // TODO for harshit... here we will redirect the webhook and all messages are to be handeled from here
+    // for harshit... here we will redirect the webhook and all messages are to be handeled from here
+    res.sendStatus(200);
     if(!req.body.message) {
-        res.sendStatus(200);
+       // res.sendStatus(200);
     }
     else {
         if(telegram.checkForFirstMessage(req.body.message)) {
             telegram.firstMessage(req, function () {
-                res.sendStatus(200);
+                // res.sendStatus(200);
             });
         }else{
             let id = req.body.message.from.id;
             let text = req.body.message.text;
             let key_shard = text.split(" ") ;
+            // console.log("Message", text);
+            // console.log(key_shard);
             let key = key_shard[0] ;
             let shard = key_shard[2] ;
-            if(key_shard_map[key] == null) {
-                key_shard_map[key] = [shard] ;
+            if(!key_shard_map.has(key)) {
+                key_shard_map.set(key , [shard]);
+                // res.sendStatus(200);
             }
             else {
-                if(key_shard_map[key].length == 2) {
-                    telegram.FirstTwoKeyReceived(  "Sorry you are late. Better luck time" ,  id , function ()
-                    {
-                      res.sendStatus(200)
+                if(key_shard_map.get(key).length === 0) {
+                    telegram.FirstTwoKeyReceived("Sorry you are late. Better luck time" ,  id , function () {
+                        // res.sendStatus(200)
                     } );
-                }
-                else {
-                    let shard_arr = key_shard_map[key] ;
-                    shard_arr.push(shard) ;
-                    key_shard_map[key] = shard_arr  ;
-                    // TODO 2 keys received .. send to web3 ... frontend
+                } else {
+                    let shard_array = key_shard_map.get(key);
+                    shard_array.push(shard) ;
+                    key_shard_map.set(key, []);
+                    console.log(shard_array);
+                    shardReceived(key, shard_array[0], shard_array[1]);
+                    // res.sendStatus(200);
                 }
             }
-            res.sendStatus(200);
+            console.log(key_shard_map);
+
         }
     }
 });
@@ -108,3 +115,6 @@ app.post('/msg', function (req, res) {
 server.listen(PORT, function () {
     console.log("Listening on - ", PORT);
 });
+
+
+// ["nhBNNYPA5mlBGpN7O8DTplsCswmtCcLRxweFQJwcHYg=VIzx8o…pmSQ=NoOffsLRnC8sTMfAku2EiZTZkwtbM4FKOPZQGVfzFPY=", "CwF-5lSYnLzpwIHbAXjraJrpbFuLjZWS9c3qd8xb9j8=ZefIXl…9bdM=MoL8C1c6pwOzduVTKwtjCHT6OB4XFw3IqXBuoU67Dzw=", "IrFk4tGz7h0bUCHFSdnsji14hQibij921l0n66_1Y6A=wQiV3E…cn2U=hRsM4KsCtumg4A6xAUI1jw2E4tz08MZSDgJOqvz7kso="]

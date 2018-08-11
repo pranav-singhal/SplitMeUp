@@ -2,6 +2,7 @@ console.log("i am in buildjs");
 var bip39 = require('bip39');
 var crypto = require('crypto');
 const sssa = require('sssa-js');
+window.combine = sssa.combine;
 
 window.menmonicToSSS = function menmonicToSSS(mnemonic,shareCount,threshold, password,callback) {
     console.log("inside menmonicToSSS");
@@ -21,7 +22,8 @@ window.combineSSS =  function combineSSS(mnemonicShares, password) {
     console.log('shares',mnemonicShares);
     let shares = mnemonicShares;
     let splitVal = sssa.combine(shares);
-    // console.log('splitVal',splitVal);
+    // console.log("splitval", splitVal);
+    console.log('splitVal',splitVal);
     let encKey = splitVal;
     // console.log("enckey inside combieSSS", encKey);
     return new Promise((resolve, reject) => {

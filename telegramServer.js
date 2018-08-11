@@ -20,7 +20,7 @@ module.exports = {
     },
 
     sendKeyToRetrieve: function sendKeyToRetrieve(key, chatIds, callback) {
-
+        console.log("Sending Key to Ids")
         let url = 'https://api.telegram.org/bot' + this.token_id + '/sendMessage';
         let request_text = "Please send the shard corresponding to the key : " + key + ". Please reply in the following format 'key : shard''";
 
@@ -36,6 +36,7 @@ module.exports = {
                 throw error
             });
         }
+        console.log("Sent");
     },
 
     FirstTwoKeyReceived: function FirstTwoKeyReceived(msg, chatId, callback) {
