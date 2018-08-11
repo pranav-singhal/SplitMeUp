@@ -15,7 +15,7 @@
     <script type="text/javascript" src="js/telegramSend.js"></script>
     <script type="text/javascript" src="js/main.js">
     </script>
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
     <script src="js/socket.js"></script>
     <title>SplitMeUp!</title>
 </head>
@@ -135,14 +135,22 @@
         <!-- </section> -->
     </div>
 
-    <div class="preloader loading hide">
-        <span class="slice"></span>
-        <span class="slice"></span>
-        <span class="slice"></span>
-        <span class="slice"></span>
-        <span class="slice"></span>
-        <span class="slice"></span>
+
+    <div class="model-for-result">
+        <div class="wait-request">
+          Your request is under Process . Please wait until we recieve all the pieces from the user. <br> This process might take some time.
+        </div>
+
+            <div class="preloader loading hide">
+                <span class="slice"></span>
+                <span class="slice"></span>
+                <span class="slice"></span>
+                <span class="slice"></span>
+                <span class="slice"></span>
+                <span class="slice"></span>
+            </div>
     </div>
+
 </div>
 <div class="custom-account-become-a-part" id="tgram-register-modal">
     <div class="modal-card" id="tgram-register-modal-card">
@@ -169,6 +177,9 @@
 
         <!-- </section> -->
     </div>
+
+
+
 </div>
 
 
@@ -190,7 +201,6 @@
 
 <div class="model-for-result">
     <div class="wait-request">
-      Your request is under Process . Please wait until we recieve all the pieces from the user. <br> This process might take some time.
     </div>
 
         <div class="preloader loading hide">
@@ -274,14 +284,24 @@
         $('#enter-seed-phrase').removeClass('hide');
     })
     $('#create-piece-button').click(function(){
+
+        $(".model-for-result")[0].style.display = "flex";
         $('.preloader').removeClass('hide');
         $(this).attr('disabled','disabled');
         $('#seed-phrase').attr('disabled','disabled');
         $(this).html('Encrypting your key...');
         var seed_phrase = $('#seed-phrase').val();
-        makeShares(seed_phrase,password, username);
-        // $(this).html('Sending your Key to Users...');
-        // telegram code goes here
+        makeShares(seed_phrase,password, username , function()
+        {
+          $("#create-piece-button").html('Sending your Key to Users...');
+
+          setTimeout(function () {
+            $("#create-piece-button").html('Completed');
+            $(".wait-request").html('Your Shards Have Been Distributed Over The Network');
+          }, 10);
+
+
+        });
 
 
 

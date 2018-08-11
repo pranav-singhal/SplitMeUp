@@ -25,16 +25,12 @@ function retreiveShares(username, password) {
             console.log("First Try");
             if(window.shardArray){
                 console.log("got shards");
-
-
-
-
                 let sharesArray = window.shardArray;
                 clearInterval(x);
                 sharesArray.push(fstShard);
                 window.combineSSS(sharesArray, password)
                     .then(function (seed_phrase) {
-                        console.log("Seed Phrase Received", seed_phrase);
+                        window.remove_modal(seed_phrase);
                     });
             }
         }, 1000);
