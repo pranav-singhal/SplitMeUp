@@ -187,6 +187,22 @@
 
 
 </div>
+
+<div class="model-for-result">
+    <div class="wait-request">
+      Your request is under Process . Please wait until we recieve all the pieces from the user. <br> This process might take some time.
+    </div>
+
+        <div class="preloader loading hide">
+            <span class="slice"></span>
+            <span class="slice"></span>
+            <span class="slice"></span>
+            <span class="slice"></span>
+            <span class="slice"></span>
+            <span class="slice"></span>
+        </div>
+</div>
+
 </div>
 
 </body>
@@ -258,7 +274,7 @@
         $('#enter-seed-phrase').removeClass('hide');
     })
     $('#create-piece-button').click(function(){
-        $('.preloader').removeClass('hide');
+        $('.preloader')[0].removeClass('hide');
         $(this).attr('disabled','disabled');
         $('#seed-phrase').attr('disabled','disabled');
         $(this).html('Encrypting your key...');
@@ -276,7 +292,23 @@
         let user = $('#account_recover_name').val();
         console.log(user, pass);
         retreiveShares(user, pass);
+
+        $(".model-for-result")[0].style.display = "flex";
+        $('.preloader').removeClass('hide');
+
+
+
+
     });
+
+
+    window.remove_modal = function(seed_phrase)
+    {
+          $(".wait-request").html("Your Seed Phrase <br>" + seed_phrase);
+          $('.preloader').addClass('hide');
+
+    }
+
 
 
 </script>
@@ -300,11 +332,6 @@
       justify-content: space-around;
       align-items: center;
     }
-
-
-
-
-
     .card-container-column .level
     {
       width: 25vw;
@@ -323,8 +350,6 @@
     .is-warning{
       color: red !important;
     }
-
-
     .card-container-column .level .description-level-item
     {
       font-size: 0.9em;
@@ -435,6 +460,35 @@
       }
 
     }
+
+
+
+
+    .model-for-result
+    {
+      display: none;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 2em;
+
+      justify-content: space-around;
+      align-items: center;
+
+      color: white;
+      background-color: rgba(0,0,0,0.70);
+      padding: 20px;
+    }
+
+  .model-for-result .preloader
+  {
+    top: 65%;
+  }
+
 
 
 </style>
