@@ -64,13 +64,15 @@
 
     </div>
 </div>
-<div class="modal" id="login-new-user-modal">
+
+<div class="custom-account" id="login-new-user-modal">
     <div class="modal-card" id="login-new-user-modal-card">
-        <header class="modal-card-head">
-            <p class="modal-card-title">Create an Account</p>
-            <button class="delete" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
+        <!-- <header class="modal-card-head"> -->
+            <p class="modal-card-title"><b>Create an Account</b></p>
+            <hr><hr><hr>
+            <!-- <button class="delete" aria-label="close"></button> -->
+        <!-- </header> -->
+        <!-- <section class="modal-card-body"> -->
             <div class="column">
                 <div class="field">
                     <label class="label">Username</label>
@@ -95,29 +97,33 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <footer class="modal-card-foot">
+        <!-- </section> -->
+        <!-- <footer class="modal-card-foot"> -->
+        <br>
+        <footer class="footer-button">
             <button class="button is-success" id="create-account">Create Account</button>
             <button class="button close-modal" >Cancel</button>
         </footer>
     </div>
     <div class="modal-card hide" id="enter-seed-phrase">
-        <header class="modal-card-head">
-            <p class="modal-card-title">Let the Splitting Begin</p>
-            <button class="delete" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
+        <!-- <header class="modal-card-head"> -->
+            <p class="modal-card-title"><b>Let the Splitting Begin</b></p>
+            <hr><hr><hr>
+            <!-- <button class="delete" aria-label="close"></button> -->
+        <!-- </header> -->
+        <!-- <section class="modal-card-body"> -->
             <div class="column">
-                <h3 class="subtitle">Enter Your seed Phrase</h3>
-                <p class="is-size-4	"> Enter the seed phrase that you use to generate your private key...
+                <h3 class="subtitle"><b>Enter Your seed Phrase</b></h3>
+                <p class="is-size-6	"> Enter the seed phrase that you use to generate your private key...
                     Don't worry, we at 'Split me Up' promise not to see or store your key or the password
                     you just entered anywhere with us.(You can check you terms and agreement and the code on
                     our app.)
                 </p>
+                <br>
 
 
-                <textarea class="textarea" name="name" id="seed-phrase" placeholder="Enter Seed Phrase" value=" ">
-              </textarea>
+                <textarea class="textarea" name="name" id="seed-phrase" placeholder="Enter Seed Phrase" value=" "></textarea>
+                <br>
                 <button class="button is-success" id="create-piece-button">Create Pieces!</button>
 
 
@@ -126,7 +132,7 @@
 
 
             </div>
-        </section>
+        <!-- </section> -->
     </div>
 
     <div class="preloader loading hide">
@@ -140,10 +146,10 @@
 </div>
 <div class="modal" id="tgram-register-modal">
     <div class="modal-card" id="tgram-register-modal-card">
-        <header class="modal-card-head">
+        <!-- <header class="modal-card-head"> -->
             <p class="modal-card-title">Connect To Our Tgram Network</p>
 
-        </header>
+        <!-- </header> -->
         <section class="modal-card-body">
             <a href="http://telegram.me/BabyGotHack_Bot" target="_blank" id="tgram-link"> @SplitMeUp </a>
 
@@ -163,12 +169,15 @@
 
 
 <div class="recover-your-key">
-  <h1>Recover Your Key</h1>
+  <h1><b>Recover Your Key</b></h1><hr><hr><hr>
+  <br>
   <label class="label">Username</label>
   <input class="input" id="account_recover_name" placeholder="Enter Username">
   <label class="label">Password</label>
   <input class="input" id="account_recover_password" placeholder="Enter Password">
-  <button class="button is-success" id="recover-button">Recover Key</button>
+  <br>
+  <br>
+  <button id="recover-button">Recover Key</button>
 
 
 </div>
@@ -189,6 +198,8 @@
 
         $('#login-new-user-button').click(function(){
             $('#login-new-user-modal').addClass('is-active');
+            $('.custom-account')[0].style.display = "block";
+
         });
         $('.main-working-button').click(function(){
             $('.card-container-column')[0].style.display = "none";
@@ -250,6 +261,7 @@
         // telegram code goes here
 
 
+
     });
 
 
@@ -294,6 +306,10 @@
 
     }
 
+    .is-warning{
+      color: red !important;
+    }
+
 
     .card-container-column .level .description-level-item
     {
@@ -320,10 +336,48 @@
 
 
 
-    .recover-your-key
+    .recover-your-key , .custom-account
     {
       display: none ;
+      padding: 20px;
+      margin: 10px;
+
+
+
     }
+
+    .recover-your-key h1{
+      font-size: 1.5em;
+    }
+    .recover-your-key hr{
+
+        margin-top: 2px;
+        margin-bottom: 2px;
+        background-color: rgba(175 , 206 , 208 , 0.61);
+      }
+
+      .recover-your-key label
+      {
+        margin-top: 5px;
+      }
+
+      #recover-button
+      {
+        padding: 10px;
+        border-radius: 4px;
+        background-color: #00d1b2;
+        border: 1px solid #00d1b2 ;
+        color: white;
+        font-size: 1.0em;
+      }
+
+
+      .modal-card hr
+      {
+        margin-top: 2px;
+        margin-bottom: 2px;
+       }
+
 
 
     @media only screen and (max-width: 800px)
