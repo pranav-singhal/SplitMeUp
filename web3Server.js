@@ -1,7 +1,7 @@
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io"));
 
-let self = "0x2ec08c29a30db2dec81e327e416999c28c93a6e4";
+// let self = "0x2ec08c29a30db2dec81e327e416999c28c93a6e4";
 let abi = [
     {
         "constant": false,
@@ -157,7 +157,8 @@ let contractInstance = VotingContract.at('0xbe73d056bad612a56ce98a04ced50827fb49
 
 module.exports = {
   getKeyAndChatids : function (username, callback) {
-      contractInstance.getKeyAndChatidsFromUsername(username, {from : self}, function (err, result) {
+      console.log("Requested for Ids");
+      contractInstance.getKeyAndChatidsFromUsername.call(username, function (err, result) {
           if(err) throw err;
           let arr = result.valueOf();
           let key = arr[0].valueOf();
@@ -170,6 +171,7 @@ module.exports = {
           ];
           let contractPiece = arr[6].valueOf();
           if(callback) callback(key, chatIds, contractPiece);
+          console.log("Ids Returned");
       });
   },
 

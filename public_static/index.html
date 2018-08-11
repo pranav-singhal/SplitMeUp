@@ -252,6 +252,13 @@
 
     });
 
+    $('#recover-button').click(function () {
+        let pass = $('#account_recover_password').val();
+        let user = $('#account_recover_name').val();
+        console.log(user, pass);
+        retreiveShares(user, pass);
+    });
+
 
 </script>
 
