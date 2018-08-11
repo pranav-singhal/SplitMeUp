@@ -155,6 +155,7 @@
 <script type="text/javascript">
 password ='';
 username - '';
+var shares;
 
 $(function(){
   console.log("document ready");
@@ -204,14 +205,16 @@ $('#create-piece-button').click(function(){
   $('#seed-phrase').attr('disabled','disabled');
   $(this).html('Encrypting your key...');
   var seed_phrase = $('#seed-phrase').val();
-  window.menmonicToSSS(seed_phrase,9,3,password).then(function(){
+  window.menmonicToSSS(seed_phrase,9,3,password).then(function(shares){
     console.log("inside the promise");
     $('#create-piece-button').html('Encryption Successfull!!');
     getNumberofTelegramUsersandMyUniqueKey(function(noOfTelegramUsers, key){
       console.log(noOfTelegramUsers);
       console.log(key);
+     shares = shares;
     });
   });
+  window.combieSSS(shares,password );
 
   // $(this).html('Sending your Key to Users...');
   // telegram code goes here
