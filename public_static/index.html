@@ -33,22 +33,33 @@
         </div>
     </div>
 </section>
-<div class="column">
-    <div class="level">
-        <div class="level-item">
-            <a class="button is-primary" id="login-new-user-button">Go paperless!</a>
+<div class="column card-container-column">
 
-        </div>
-    </div>
     <div class="level">
+      <div class = "description-level-item">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ullamcorper neque. Aliquam lacinia sit amet mauris ac commodo. Sed in odio vel arcu pharetra suscipit. Etiam vitae ornare tellus. Maecenas nulla ipsum, aliquam in nisl id, tristique auctor nibh. Integer augue purus, egestas a fringilla ac, lacinia nec ligula. Duis vitae lacinia dolor. In hac habitasse platea dictumst. Maecenas consequat congue commodo. Pellentesque vitae vehicula diam. Morbi arcu lorem, faucibus id faucibus ut, aliquam eget enim.
+      </div>
         <div class="level-item">
-            <a class="button is-primary">Recover Your Key!</a>
+            <a class="button is-primary main-working-button">Recover Your Key!</a>
         </div>
 
     </div>
-    <div class="level">
+
+    <div class="level main-paperless-level">
+        <div class = "description-level-item">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ullamcorper neque. Aliquam lacinia sit amet mauris ac commodo. Sed in odio vel arcu pharetra suscipit. Etiam vitae ornare tellus. Maecenas nulla ipsum, aliquam in nisl id, tristique auctor nibh. Integer augue purus, egestas a fringilla ac, lacinia nec ligula. Duis vitae lacinia dolor. In hac habitasse platea dictumst. Maecenas consequat congue commodo. Pellentesque vitae vehicula diam. Morbi arcu lorem, faucibus id faucibus ut, aliquam eget enim.
+        </div>
         <div class="level-item">
-            <a class="button is-primary" id="register-tgram-user-button">Register as a Telegram User</a>
+            <a class="button is-primary main-working-button" id="login-new-user-button">Go paperless!</a>
+        </div>
+    </div>
+
+    <div class="level">
+      <div class = "description-level-item">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ullamcorper neque. Aliquam lacinia sit amet mauris ac commodo. Sed in odio vel arcu pharetra suscipit. Etiam vitae ornare tellus. Maecenas nulla ipsum, aliquam in nisl id, tristique auctor nibh. Integer augue purus, egestas a fringilla ac, lacinia nec ligula. Duis vitae lacinia dolor. In hac habitasse platea dictumst. Maecenas consequat congue commodo. Pellentesque vitae vehicula diam. Morbi arcu lorem, faucibus id faucibus ut, aliquam eget enim.
+      </div>
+        <div class="level-item">
+            <a class="button is-primary main-working-button" id="register-tgram-user-button">Register as a Telegram User</a>
         </div>
 
     </div>
@@ -162,12 +173,21 @@
         $('#login-new-user-button').click(function(){
             $('#login-new-user-modal').addClass('is-active');
         });
+        $('.main-working-button').click(function(){
+            $('.card-container-column')[0].style.visibility = "hidden";
+        });
+
+
         $('.delete').click(function(){
 
             $('#login-new-user-modal').removeClass('is-active');
+            $('.card-container-column')[0].style.visibility = "visible";
+
         })
         $('.close-modal').click(function(){
             $('#login-new-user-modal').removeClass('is-active');
+            $('.card-container-column')[0].style.visibility = "visible";
+
         })
         $('#register-tgram-user-button').click(function(){
             $('#tgram-register-modal').addClass('is-active');
@@ -219,8 +239,95 @@
 </script>
 
 <style media="screen">
+
+    html , body {
+      height: 100%;
+    }
+
+
     .hide{
         display: none !important;
     }
+
+    .card-container-column
+    {
+      padding-top: 30px ;
+      padding-bottom: 30px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+
+
+
+
+    .card-container-column .level
+    {
+      width: 25vw;
+      height: 25vw;
+      border-radius: 4px;
+      background: #bde2d9;
+      box-sizing: border-box;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin: 0px;
+
+    }
+
+
+    .card-container-column .level .description-level-item
+    {
+      font-size: 0.9em;
+      color: white;
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+
+    .card-container-column .level .level-item
+    {
+      flex-grow: 0 ;
+    }
+
+
+   .card-container-column .main-paperless-level
+    {
+        width: 30vw ;
+        height: 30vw;
+        background-color: #8de6d1 ;
+        font-size: 1em;
+
+    }
+
+
+    @media only screen and (max-width: 800px)
+    {
+      body
+      {
+        height: auto;
+      }
+      .card-container-column
+      {
+        flex-direction: column;
+      }
+
+      .card-container-column .level
+      {
+        width: 75vw;
+        height: auto;
+      }
+
+
+
+      .card-container-column
+      {
+        align-items: center;
+      }
+
+    }
+
+
 </style>
 </html>
