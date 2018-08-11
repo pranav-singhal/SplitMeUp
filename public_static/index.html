@@ -138,7 +138,6 @@
 
     <div class="model-for-result">
         <div class="wait-request">
-          Your request is under Process . Please wait until we recieve all the pieces from the user. <br> This process might take some time.
         </div>
 
             <div class="preloader loading hide">
@@ -152,6 +151,9 @@
     </div>
 
 </div>
+
+
+
 <div class="custom-account-become-a-part" id="tgram-register-modal">
     <div class="modal-card" id="tgram-register-modal-card">
         <!-- <header class="modal-card-head"> -->
@@ -201,6 +203,7 @@
 
 <div class="model-for-result">
     <div class="wait-request">
+      Your request is under Process . Please wait until we recieve all the pieces from the user. <br> This process might take some time.
     </div>
 
         <div class="preloader loading hide">
@@ -311,10 +314,13 @@
         let pass = $('#account_recover_password').val();
         let user = $('#account_recover_name').val();
         console.log(user, pass);
-        retreiveShares(user, pass);
 
-        $(".model-for-result")[0].style.display = "flex";
-        $('.preloader').removeClass('hide');
+
+                $(".model-for-result")[1].style.display = "flex";
+                $('.preloader').removeClass('hide');
+
+
+        retreiveShares(user, pass);
 
 
 
