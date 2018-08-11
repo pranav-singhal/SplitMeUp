@@ -172,7 +172,9 @@
 </div>
 
 
-<div class="recover-your-key">
+<div class="recover-card">
+
+<div class="recover-your-key modal-card">
   <h1><b>Recover Your Key</b></h1><hr><hr><hr>
   <br>
   <label class="label">Username</label>
@@ -185,7 +187,7 @@
 
 
 </div>
-
+</div>
 
 </body>
 <script type="text/javascript" src="js/playWithShares.js"></script>
@@ -306,7 +308,7 @@
     .card-container-column .level
     {
       width: 25vw;
-      height: 25vw;
+      height: 30vw;
       border-radius: 4px;
       background: #bde2d9;
       box-sizing: border-box;
@@ -337,10 +339,17 @@
     }
 
 
+    .recover-card
+    {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
    .card-container-column .main-paperless-level
     {
         width: 30vw ;
-        height: 30vw;
+        height: 40vw;
         background-color: #8de6d1 ;
         font-size: 1em;
 
@@ -408,10 +417,12 @@
       .card-container-column
       {
         flex-direction: column;
+        align-items: center;
       }
 
       .card-container-column .level
       {
+        margin-top: 20px;
         width: 75vw;
         height: auto;
       }
