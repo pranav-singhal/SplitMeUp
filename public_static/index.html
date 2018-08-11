@@ -17,6 +17,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
     <script src="js/socket.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <title>SplitMeUp!</title>
 </head>
 <body>
@@ -24,10 +25,12 @@
     <div class="hero-body">
         <div class="container">
             <div class="level">
-                <h1 class="title level-item">Split Me Up!</h1>
+              <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+                <h1 class="title level-item" style=" font-family: Pacifico , cursive;" > Split Me Up! </h1>
             </div>
             <div class="level">
-                <h2 class="subtitle level-item">The paperless way to secure your private keys!!!</h2>
+              <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+              <h1 class="subtitle level-item" style="font-family: Satisfy, cursive;">The paperless way to secure your private keys!!!</h1>
             </div>
 
         </div>
@@ -73,7 +76,7 @@
         <!-- <button class="delete" aria-label="close"></button> -->
         <!-- </header> -->
         <!-- <section class="modal-card-body"> -->
-        <div class="column">
+        <div class="column" style="padding: 0">
             <div class="field">
                 <label class="label">Username</label>
                 <div class="control">
@@ -157,12 +160,16 @@
 <div class="custom-account-become-a-part" id="tgram-register-modal">
     <div class="modal-card" id="tgram-register-modal-card">
         <!-- <header class="modal-card-head"> -->
-        <p class="modal-card-title"><b>Connect To Our Tgram Network</b></p>
+        <p class="modal-card-title"><b>Connect To Our Telegram Network</b></p>
         <hr><hr><hr>
         <br>
         <!-- </header> -->
         <!-- <section class="modal-card-body"> -->
-        <a href="http://telegram.me/BabyGotHack_Bot" target="_blank" id="tgram-link"> @SplitMeUp </a>
+
+        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing at in tellus integer feugiat scelerisque varius morbi enim. Id neque aliquam vestibulum morbi blandit cursus risus at ultrices. Cursus euismod quis viverra nibh cras. Cursus euismod quis viverra nibh cras. At volutpat diam ut venenatis. Purus non enim praesent elementum facilisis leo. Faucibus nisl tincidunt eget nullam non nisi. Magna eget est lorem ipsum dolor sit amet. Tortor vitae purus faucibus ornare suspendisse sed nisi. Donec massa sapien faucibus et molestie ac feugiat. Magnis dis parturient montes nascetur ridiculus mus mauris. Tincidunt dui ut ornare lectus sit amet est placerat. Lectus quam id leo in vitae turpis massa. Dignissim convallis aenean et tortor at risus viverra. Curabitur vitae nunc sed velit dignissim sodales ut eu. Nec feugiat in fermentum posuere urna nec tincidunt. Sollicitudin aliquam ultrices sagittis orci a scelerisque. Vel orci porta non pulvinar neque laoreet suspendisse interdum
+        </span>
+        <br>
+      <span><b>Click to the network : </b><span><a href="http://telegram.me/BabyGotHack_Bot" target="_blank" id="tgram-link"> <i>@SplitMeUp</i> </a></span></span>
 
         <div class="field hide" id="tgram-otp-field">
             <br>
@@ -266,12 +273,19 @@
         let otp = $('#otp').val();
         sendOTP(otp,function(chatID){
 
+          $("#verify-otp-button").attr('disabled','disabled');
+          $("#verify-otp-button").html('Verified');
+
+
             addTelegramUserToContract(chatID,function(bool){
                 if(bool){
                     sendWelcomeMessage(chatID, function () {
                         console.log("chatid saved to contract");
+                        $("#verify-otp-button").attr('disabled','disabled');
+
                     });
                 }
+
             });
         });
 
@@ -339,8 +353,21 @@
 
     html , body {
         height: 100vh;
+        font-family: 'Montserrat', sans-serif !important ;
+
     }
 
+    .title
+    {
+      font-weight: bold;
+      font-size: 2.5em;
+    }
+
+    .subtitle
+    {
+      font-size: 1.8em;
+      font-weight: bold;
+    }
 
     .hide{
         display: none !important;
@@ -359,7 +386,7 @@
         width: 25vw;
         height: 30vw;
         border-radius: 4px;
-        background: #bde2d9;
+        background: #a3e0d0;
         box-sizing: border-box;
         padding: 1em;
         display: flex;
@@ -374,7 +401,7 @@
     }
     .card-container-column .level .description-level-item
     {
-        font-size: 0.9em;
+        font-size: 1.0em;
         color: white;
         text-align: justify;
         margin-bottom: 20px;
