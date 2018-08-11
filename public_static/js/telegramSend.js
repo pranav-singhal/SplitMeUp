@@ -9,7 +9,7 @@ function sendKeyValuePairToChatid(chatid, key, value, callback) {
     });
 }
 
-function sendWelcomeMessage(id) {
+function sendWelcomeMessage(id, callback) {
     let url = 'https://api.telegram.org/bot' + token_id + '/sendMessage';
     let msg = "Congrats! Registered with Split Me Up!! Now You will start getting " +
         "Key-Value Pairs Store them and get a chance to earn cryptos!!";

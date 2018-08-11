@@ -1,5 +1,5 @@
 pragma solidity ^0.4.11;
-contract Test{
+contract SplitMeUp{
     mapping (string => string) usernameToPiece; //address mapped to piece stored in smart contract
     mapping (string => uint[]) usernameToChatids; // address mapped to the array of indices of telegram users who have this adresses' pieces
     mapping (string => address) chatidToUser; //chat id of telegram user mapped to his metamask account
@@ -11,6 +11,7 @@ contract Test{
     // function addPiece(string _key) public {
     //     addressToPiece[msg.sender] = _key;
     // }
+    function Test() public payable{}
 
     function getNumberofTelegramUsersandMyUinqKey() public view returns(uint,uint){
         uint currentIdx = numberOfCurrentActiveUsers + 1;
@@ -28,8 +29,13 @@ contract Test{
         //  numberOfTelegramUsers++;
 
     }
+
+    function() payable{
+
+    }
+
     function addPvtKeyPiece (string _piece, uint _key, string _username, uint[5] _idsIndices) public payable{
-        require(msg.value == 0.001 ether);
+        // require(msg.value == 0.001 ether);
         usernameToPiece[_username] = _piece;
         usernameToChatids[_username] = _idsIndices;
         numberOfCurrentActiveUsers++;

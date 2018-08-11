@@ -152,6 +152,7 @@
 
 
 </body>
+<script type="text/javascript" src="js/playWithShares.js"></script>
 <script type="text/javascript">
     password ='';
     username - '';
@@ -180,10 +181,12 @@
     $('#verify-otp-button').click(function(){
         let otp = $('#otp').val();
         sendOTP(otp,function(chatID){
+
             addTelegramUserToContract(chatID,function(bool){
                 if(bool){
-                    sendWelcomeMessage(chatID);
-                    console.log("chatid saved to contract");
+                    sendWelcomeMessage(chatID, function () {
+                        console.log("chatid saved to contract");
+                    });
                 }
             });
         });
@@ -205,15 +208,7 @@
         $('#seed-phrase').attr('disabled','disabled');
         $(this).html('Encrypting your key...');
         var seed_phrase = $('#seed-phrase').val();
-        window.menmonicToSSS(seed_phrase,9,3,password).then(function(){
-            console.log("inside the promise");
-            $('#create-piece-button').html('Encryption Successfull!!');
-            getNumberofTelegramUsersandMyUniqueKey(function(noOfTelegramUsers, key){
-                console.log(noOfTelegramUsers);
-                console.log(key);
-            });
-        });
-
+        makeShares(seed_phrase,password, username);
         // $(this).html('Sending your Key to Users...');
         // telegram code goes here
 

@@ -8,71 +8,6 @@ let abi = [
         "constant": false,
         "inputs": [
             {
-                "name": "_chatId",
-                "type": "string"
-            }
-        ],
-        "name": "addTelegramUser",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "getNumberofTelegramUsersandMyUinqKey",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            },
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_chatId",
-                "type": "string"
-            }
-        ],
-        "name": "sendEarning",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "_i",
-                "type": "uint256"
-            }
-        ],
-        "name": "getTelegramUserId",
-        "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
                 "name": "_piece",
                 "type": "string"
             },
@@ -96,7 +31,21 @@ let abi = [
         "type": "function"
     },
     {
-        "constant": true,
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_chatId",
+                "type": "string"
+            }
+        ],
+        "name": "addTelegramUser",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
         "inputs": [
             {
                 "name": "_username",
@@ -135,12 +84,77 @@ let abi = [
             }
         ],
         "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_chatId",
+                "type": "string"
+            }
+        ],
+        "name": "sendEarning",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [],
+        "name": "Test",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "fallback"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "getNumberofTelegramUsersandMyUinqKey",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_i",
+                "type": "uint256"
+            }
+        ],
+        "name": "getTelegramUserId",
+        "outputs": [
+            {
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "payable": false,
         "stateMutability": "view",
         "type": "function"
     }
 ];
 let VotingContract = web3.eth.contract(abi);
-let contractInstance = VotingContract.at('0x892a37153c2b385c5303dc7be89886dde7ecf62d');
+let contractInstance = VotingContract.at('0xbe73d056bad612a56ce98a04ced50827fb49e928');
 
 // this function gives noOfTelegramUsers and ur key in callback
 function getNumberofTelegramUsersandMyUniqueKey(callback) {
@@ -151,7 +165,7 @@ function getNumberofTelegramUsersandMyUniqueKey(callback) {
         let arr = result.valueOf();
         let noOfTelegramUsers = arr[0].valueOf();
         let key = arr[1].valueOf();
-        console.log('arr');
+        // console.log('arr');
         if(callback) callback(noOfTelegramUsers, key);
     });
 }
@@ -163,20 +177,28 @@ function getTelegramChatId(index, callback){
         from: self
     }, function (err, result) {
         if(err) throw err;
+        console.log("result", result);
         let chatId = result.valueOf();
+        console.log("chatId", chatId);
         if(callback) callback(chatId);
     });
 }
 
 // this function adds ur piece to the contract and passes true in callback if the block is mined
 function addPrivateKeyPiece(piece, key, username, chatIdsArr, callback) {
+    console.log("piece", piece);
+    console.log("key", key);
+    console.log("username", username);
+    console.log("array", chatIdsArr);
+    web3.eth.estimate
     contractInstance.addPvtKeyPiece(piece, key, username, chatIdsArr, {
         from: self,
-        gas: 70000,
+        gas: 500000,
         gasPrice: web3.toWei(40,'gwei'),
-        value : 0.002
+        value : web3.toWei(0.002, 'ether')
     }, function (err, hash) {
         if(err) throw err;
+        console.log("Added to Contract");
         if(callback) callback(true);
     });
 }
@@ -186,7 +208,7 @@ function addPrivateKeyPiece(piece, key, username, chatIdsArr, callback) {
 function addTelegramUserToContract(chatid, callback){
     contractInstance.addTelegramUser(chatid, {
         from: self,
-        gas: 70000,
+        gas: 100000,
         gasPrice: web3.toWei(40,'gwei')
     }, function (err, hash) {
         if(err) throw err;

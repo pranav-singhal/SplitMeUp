@@ -12,11 +12,10 @@
     "bip39": "^2.5.0",
     "body-parser": "^1.18.3",
     "browserify": "^16.2.2",
-    "crypto": "^1.0.1",
     "express": "^4.16.3",
     "nodemon": "^1.18.3",
     "socket.io": "^2.1.1",
-    "secrets.js-grempe": "^1.1.0",
+    "sssa-js": "^0.0.1",
     "web3": "0.20.6"
   }
 }

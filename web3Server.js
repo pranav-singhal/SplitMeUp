@@ -7,71 +7,6 @@ let abi = [
         "constant": false,
         "inputs": [
             {
-                "name": "_chatId",
-                "type": "string"
-            }
-        ],
-        "name": "addTelegramUser",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "getNumberofTelegramUsersandMyUinqKey",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            },
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_chatId",
-                "type": "string"
-            }
-        ],
-        "name": "sendEarning",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "_i",
-                "type": "uint256"
-            }
-        ],
-        "name": "getTelegramUserId",
-        "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
                 "name": "_piece",
                 "type": "string"
             },
@@ -95,7 +30,21 @@ let abi = [
         "type": "function"
     },
     {
-        "constant": true,
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_chatId",
+                "type": "string"
+            }
+        ],
+        "name": "addTelegramUser",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
         "inputs": [
             {
                 "name": "_username",
@@ -134,12 +83,77 @@ let abi = [
             }
         ],
         "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_chatId",
+                "type": "string"
+            }
+        ],
+        "name": "sendEarning",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [],
+        "name": "Test",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "fallback"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "getNumberofTelegramUsersandMyUinqKey",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_i",
+                "type": "uint256"
+            }
+        ],
+        "name": "getTelegramUserId",
+        "outputs": [
+            {
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "payable": false,
         "stateMutability": "view",
         "type": "function"
     }
 ];
 let VotingContract = web3.eth.contract(abi);
-let contractInstance = VotingContract.at('0x892a37153c2b385c5303dc7be89886dde7ecf62d');
+let contractInstance = VotingContract.at('0xbe73d056bad612a56ce98a04ced50827fb49e928');
 
 module.exports = {
   getKeyAndChatids : function (username, callback) {
