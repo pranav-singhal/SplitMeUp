@@ -55,6 +55,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/', express.static('public_static'))
 
+app.get('/favicon.ico', function (req, res) {
+    res.sendStatus(200);
+});
+
 app.post('/msg', function (req, res) {
     // console.log("here");
     // for harshit... here we will redirect the webhook and all messages are to be handeled from here
