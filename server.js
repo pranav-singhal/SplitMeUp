@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 8080 || process.env.PORT;
+const PORT = process.env.PORT;
 const bodyParser = require('body-parser');
 const web3Functions = require('./web3Server.js');
 const telegram = require('./telegramServer.js');
