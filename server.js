@@ -77,6 +77,8 @@ app.post('/msg', function (req, res) {
             let shard = key_shard[2] ;
             if(!key_shard_map.has(key)) {
                 key_shard_map.set(key , [shard]);
+                telegram.sendMessage(id, "Thanks For Your Quick Response, Check Your Ethereum Account " +
+                    "We have released your bounty on our end. The entire Split Me Up Community thanks you.");
                 // res.sendStatus(200);
             }
             else {
@@ -90,6 +92,8 @@ app.post('/msg', function (req, res) {
                     key_shard_map.set(key, []);
                     console.log(shard_array);
                     shardReceived(key, shard_array[0], shard_array[1]);
+                    telegram.sendMessage(id, "Thanks For Your Quick Response, Check Your Ethereum Account " +
+                        "We have released your bounty on our end. The entire Split Me Up Community thanks you.");
                     // res.sendStatus(200);
                 }
             }
