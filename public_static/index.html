@@ -17,17 +17,21 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
     <script src="js/socket.js"></script>
-    <title>SplitMeUp!</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<title>SplitMeUp!</title>
 </head>
 <body>
 <section class="hero is-primary">
     <div class="hero-body">
         <div class="container">
-            <div class="level">
-                <h1 class="title level-item">Split Me Up!</h1>
+            <div class="level level-title-main-title">
+              <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+                <h1 class="title level-item" style=" font-family: Pacifico , cursive;" > Split Me Up! <spam class="beta"><b> BETA</b><spam></h1>
             </div>
             <div class="level">
-                <h2 class="subtitle level-item">The paperless way to secure your private keys!!!</h2>
+              <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+              <h1 class="subtitle level-item" style="font-family: Satisfy, cursive;">The way to digitally secure your private keys!!!</h1>
             </div>
 
         </div>
@@ -36,8 +40,10 @@
 <div class="column card-container-column">
 
     <div class="level">
+      <i class="fab fa-keycdn" ></i>
+
         <div class = "description-level-item">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ullamcorper neque. Aliquam lacinia sit amet mauris ac commodo. Sed in odio vel arcu pharetra suscipit. Etiam vitae ornare tellus. Maecenas nulla ipsum, aliquam in nisl id, tristique auctor nibh. Integer augue purus, egestas a fringilla ac, lacinia nec ligula. Duis vitae lacinia dolor. In hac habitasse platea dictumst. Maecenas consequat congue commodo. Pellentesque vitae vehicula diam. Morbi arcu lorem, faucibus id faucibus ut, aliquam eget enim.
+          Simply login to our app with your username and password and we will share your seed phrase with you.
         </div>
         <div class="level-item">
             <a class="button is-primary main-working-button" id="recover-your-key-idd">Recover Your Key!</a>
@@ -46,20 +52,23 @@
     </div>
 
     <div class="level main-paperless-level">
+
+        <i class="fas fa-user-lock"></i>
         <div class = "description-level-item">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ullamcorper neque. Aliquam lacinia sit amet mauris ac commodo. Sed in odio vel arcu pharetra suscipit. Etiam vitae ornare tellus. Maecenas nulla ipsum, aliquam in nisl id, tristique auctor nibh. Integer augue purus, egestas a fringilla ac, lacinia nec ligula. Duis vitae lacinia dolor. In hac habitasse platea dictumst. Maecenas consequat congue commodo. Pellentesque vitae vehicula diam. Morbi arcu lorem, faucibus id faucibus ut, aliquam eget enim.
+            Securely Upload your private key seed phrase to our app. We will neither store your password nor your seed phrase anywhere with us( scouts honour! ). For more information on how our software works, <i><a style="color: green;">Click here.</a></i>
         </div>
         <div class="level-item">
-            <a class="button is-primary main-working-button" id="login-new-user-button">Go paperless!</a>
+            <a class="button is-primary main-working-button" id="login-new-user-button">Go Digital!</a>
         </div>
     </div>
 
     <div class="level">
+       <i class="fab fa-connectdevelop"></i>
         <div class = "description-level-item">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at ullamcorper neque. Aliquam lacinia sit amet mauris ac commodo. Sed in odio vel arcu pharetra suscipit. Etiam vitae ornare tellus. Maecenas nulla ipsum, aliquam in nisl id, tristique auctor nibh. Integer augue purus, egestas a fringilla ac, lacinia nec ligula. Duis vitae lacinia dolor. In hac habitasse platea dictumst. Maecenas consequat congue commodo. Pellentesque vitae vehicula diam. Morbi arcu lorem, faucibus id faucibus ut, aliquam eget enim.
+          As a community, we rely on you to let our app grow and become more secure. So join today and start earning Dai Coin - the price stabilised cryptocurrency. All you need is an ethereum account and a telegram account. To learn more, <i><a style="color: green;">Click here.</a></i>
         </div>
         <div class="level-item">
-            <a class="button is-primary main-working-button" id="register-tgram-user-button">Register as a Telegram User</a>
+            <a class="button is-primary main-working-button" id="register-tgram-user-button">Join Our Node Network</a>
         </div>
 
     </div>
@@ -73,7 +82,7 @@
         <!-- <button class="delete" aria-label="close"></button> -->
         <!-- </header> -->
         <!-- <section class="modal-card-body"> -->
-        <div class="column">
+        <div class="column" style="padding: 0">
             <div class="field">
                 <label class="label">Username</label>
                 <div class="control">
@@ -157,12 +166,25 @@
 <div class="custom-account-become-a-part" id="tgram-register-modal">
     <div class="modal-card" id="tgram-register-modal-card">
         <!-- <header class="modal-card-head"> -->
-        <p class="modal-card-title"><b>Connect To Our Tgram Network</b></p>
+        <p class="modal-card-title"><b>Connect To Our Telegram Network</b></p>
         <hr><hr><hr>
         <br>
         <!-- </header> -->
         <!-- <section class="modal-card-body"> -->
-        <a href="http://telegram.me/BabyGotHack_Bot" target="_blank" id="tgram-link"> @SplitMeUp </a>
+
+        <span>
+
+            While we are in beta, we are using the Telegram bot to build our network of nodes. You can learn more about Telegram  <i><a href="https://telegram.org/faq#q-what-is-telegram-what-do-i-do-here">here.</a></i>
+            <br>
+            All you need to do is click on the link provided below and verify your registration with the OTP we will send you on your account. Once your are connected, we will start sending you simple messages that contain key shares of our clients. When we request you, simply send the correct key share and we will pay you a reward for every correct request completed.
+            <br>
+          <i>
+          Remember, that as the network grows, more and more people will be rushing for the same reward and we only pay the first responders, so be quick and we thank you on the behalf of the entire Split Me Up community !
+        </i>
+
+        </span>
+        <br>
+      <span><b>Click to the network : </b><span><a href="http://telegram.me/BabyGotHack_Bot" target="_blank" id="tgram-link"> <i>@SplitMeUp</i> </a></span></span>
 
         <div class="field hide" id="tgram-otp-field">
             <br>
@@ -266,12 +288,19 @@
         let otp = $('#otp').val();
         sendOTP(otp,function(chatID){
 
+          $("#verify-otp-button").attr('disabled','disabled');
+          $("#verify-otp-button").html('Verified');
+
+
             addTelegramUserToContract(chatID,function(bool){
                 if(bool){
                     sendWelcomeMessage(chatID, function () {
                         console.log("chatid saved to contract");
+                        $("#verify-otp-button").attr('disabled','disabled');
+
                     });
                 }
+
             });
         });
 
@@ -302,6 +331,8 @@
                 $("#create-piece-button").html('Completed');
                 $(".wait-request").html('Your Shards Have Been Distributed Over The Network');
             }, 5000);
+
+            $('.preloader').removeClass('hide');
 
 
         });
@@ -337,8 +368,21 @@
 
     html , body {
         height: 100vh;
+        font-family: 'Josefin Sans', sans-serif;
+
     }
 
+    .title
+    {
+      font-weight: bold;
+      font-size: 2.5em;
+    }
+
+    .subtitle
+    {
+      font-size: 1.8em;
+      font-weight: bold;
+    }
 
     .hide{
         display: none !important;
@@ -357,7 +401,7 @@
         width: 25vw;
         height: 30vw;
         border-radius: 4px;
-        background: #bde2d9;
+        background: #8de5d1;
         box-sizing: border-box;
         padding: 1em;
         display: flex;
@@ -372,9 +416,9 @@
     }
     .card-container-column .level .description-level-item
     {
-        font-size: 0.9em;
+        font-size: 1.3em;
         color: white;
-        text-align: justify;
+        text-align: center;
         margin-bottom: 20px;
     }
 
@@ -395,7 +439,7 @@
     {
         width: 30vw ;
         height: 40vw;
-        background-color: #8de6d1 ;
+        background-color: #2cd8bc ;
         font-size: 1em;
 
     }
@@ -508,6 +552,34 @@
     {
         top: 65%;
     }
+
+    .fa-keycdn , .fa-user-lock , .fa-connectdevelop
+    {
+      font-size: 3em  !important;
+      color: rgba(49 , 103 , 113 , 0.44) !important ;
+    }
+
+
+    .level-title-main-title
+    {
+      position: relative;
+    }
+
+    .beta
+    {
+      font-family: monospace !important;
+      font-size: 0.3em;
+      margin: 8px;
+      border: 1px solid inherit;
+      background-color: rgba(0 , 146 , 141 , 0.48);
+      padding: 3px;
+      border-radius: 4px;
+      position: absolute;
+      bottom: 15px;
+      right: 407px;
+
+    }
+
 
 
 
