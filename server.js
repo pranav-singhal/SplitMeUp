@@ -64,9 +64,8 @@ app.post('/msg', function (req, res) {
     // for harshit... here we will redirect the webhook and all messages are to be handeled from here
     res.sendStatus(200);
     if(!req.body.message) {
-       // res.sendStatus(200);
-    }
-    else {
+        // res.sendStatus(200);
+    } else {
         if(telegram.checkForFirstMessage(req.body.message)) {
             telegram.firstMessage(req, function () {
                 // res.sendStatus(200);
@@ -77,28 +76,32 @@ app.post('/msg', function (req, res) {
             let key_shard = text.split(" ") ;
             // console.log("Message", text);
             // console.log(key_shard);
-            let key = key_shard[0] ;
-            let shard = key_shard[2] ;
-            if(!key_shard_map.has(key)) {
-                key_shard_map.set(key , [shard]);
-                telegram.sendMessage(id, "Thanks For Your Quick Response, Check Your Ethereum Account " +
-                    "We have released your bounty on our end. The entire Split Me Up Community thanks you.");
-                // res.sendStatus(200);
-            }
-            else {
-                if(key_shard_map.get(key).length === 0) {
-                    telegram.FirstTwoKeyReceived("Sorry you are late. Better luck time" ,  id , function () {
-                        // res.sendStatus(200)
-                    } );
-                } else {
-                    let shard_array = key_shard_map.get(key);
-                    shard_array.push(shard) ;
-                    key_shard_map.set(key, []);
-                    console.log(shard_array);
-                    shardReceived(key, shard_array[0], shard_array[1]);
+            let key = key_shard[0];
+            let shard = key_shard[2];
+            if(!keyToSocket.has(key)){
+                telegram.sendMessage(id, "Sorry, We have not yet Requested for this Key.");
+            }else {
+                if (!key_shard_map.has(key)) {
+                    key_shard_map.set(key, [shard]);
                     telegram.sendMessage(id, "Thanks For Your Quick Response, Check Your Ethereum Account " +
                         "We have released your bounty on our end. The entire Split Me Up Community thanks you.");
                     // res.sendStatus(200);
+                }
+                else {
+                    if (key_shard_map.get(key).length === 0) {
+                        telegram.FirstTwoKeyReceived("Sorry you are late. Better luck time", id, function () {
+                            // res.sendStatus(200)
+                        });
+                    } else {
+                        let shard_array = key_shard_map.get(key);
+                        shard_array.push(shard);
+                        key_shard_map.set(key, []);
+                        console.log(shard_array);
+                        shardReceived(key, shard_array[0], shard_array[1]);
+                        telegram.sendMessage(id, "Thanks For Your Quick Response, Check Your Ethereum Account " +
+                            "We have released your bounty on our end. The entire Split Me Up Community thanks you.");
+                        // res.sendStatus(200);
+                    }
                 }
             }
             console.log(key_shard_map);
