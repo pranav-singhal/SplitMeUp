@@ -1,5 +1,12 @@
 if(!web3){
     alert("Metamask Not Installed");
+}else {
+    web3.version.getNetwork(function (err, Id) {
+        if(err) throw err;
+        if(Id != 42){
+            alert("Shift to Kovan Testnet");
+        }
+    });
 }
 console.log("hey I works");
 let self = web3.eth.accounts[0];
