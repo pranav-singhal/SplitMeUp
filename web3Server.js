@@ -1,5 +1,5 @@
 const Web3 = require('web3');
-const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io"));
+const web3 = new Web3(new Web3.providers.HttpProvider("https://kovan.infura.io"));
 
 // let self = "0x2ec08c29a30db2dec81e327e416999c28c93a6e4";
 let abi = [
@@ -153,7 +153,7 @@ let abi = [
     }
 ];
 let VotingContract = web3.eth.contract(abi);
-let contractInstance = VotingContract.at('0x2aa0dcc9a04b8b1b1d3a939e153a29aa2176c801');
+let contractInstance = VotingContract.at('0x87D1c6908C9Ef77807B8ECC91C4BEF1c9FA7d14F');
 
 module.exports = {
   getKeyAndChatids : function (username, callback) {

@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="">
 
     <script type="text/javascript" src="js/web3Functions.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" />
@@ -31,8 +32,11 @@
             </div>
             <div class="level">
               <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
-              <h1 class="subtitle level-item" style="font-family: Satisfy, cursive;">The way to digitally secure your private keys!!!</h1>
+                <h1 class="subtitle level-item" style="font-family: Satisfy, cursive;">The digital way to secure your private keys!!!</h1>
             </div>
+
+            <div style="font-family: Josefin Sans ; text-align: center ; font-size: 1.5em; "><br><br>Github Link : <a href="https://github.com/pranav-singhal/ethIndiaHack">SplitMeUp</a></div>
+
 
         </div>
     </div>
@@ -50,6 +54,7 @@
         </div>
 
     </div>
+
 
     <div class="level main-paperless-level">
 
@@ -225,7 +230,7 @@
 
     <div class="model-for-result">
         <div class="wait-request">
-            Your request is under Process . Please wait until we recieve all the pieces from the user. <br> This process might take some time.
+            Your request is under Process . Please wait until we receive all the shares from the nodes. <br> This process might take some time.
         </div>
 
         <div class="preloader loading hide">
@@ -329,7 +334,7 @@
 
             setTimeout(function () {
                 $("#create-piece-button").html('Completed');
-                $(".wait-request").html('Your Shards Have Been Distributed Over The Network');
+                $(".wait-request").html('Your Shares Have Been Distributed Over The Network');
             }, 5000);
 
             $('.preloader').removeClass('hide');
@@ -367,7 +372,8 @@
 <style media="screen">
 
     html , body {
-        height: 100vh;
+        min-height: 100vh;
+        height: auto;
         font-family: 'Josefin Sans', sans-serif;
 
     }
@@ -399,7 +405,7 @@
     .card-container-column .level
     {
         width: 25vw;
-        height: 30vw;
+        height: 35vw;
         border-radius: 4px;
         background: #8de5d1;
         box-sizing: border-box;
@@ -501,7 +507,6 @@
     {
         body
         {
-            height: auto;
         }
         .card-container-column
         {
