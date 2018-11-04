@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT;
+const PORT = 3000;
 const bodyParser = require('body-parser');
 const web3Functions = require('./web3Server.js');
 const telegram = require('./telegramServer.js');
@@ -54,6 +54,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 app.use('/', express.static('public_static'));
+app.use('/phone', express.static('public_static_mobile'));
 
 app.get('/favicon.ico', function (req, res) {
     res.sendStatus(200);
