@@ -50,6 +50,29 @@ public class WebAppInterface
 
     }
 
+    @JavascriptInterface
+    public void storeWallet(String privateKey)
+    {
+
+        SharedPreferences.Editor editor = context.getSharedPreferences( "file.wallet" , Context.MODE_PRIVATE).edit();
+
+        editor.putString( "privateKey" , privateKey );
+
+        editor.apply();
+
+        Toast.makeText(context , "Wallet Stored" , Toast.LENGTH_LONG).show();
+    }
+
+    @JavascriptInterface
+    public String getWallet()
+    {
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("file.wallet" , Context.MODE_PRIVATE) ;
+        String result  = sharedPreferences.getString( "privateKey" , null );
+        Toast.makeText(context , "Wallet Retrieved" , Toast.LENGTH_LONG).show();
+        return result ;
+
+    }
 
     @JavascriptInterface
     public void sendNewShard(String json_string)

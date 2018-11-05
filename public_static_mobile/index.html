@@ -10,14 +10,15 @@
     </style>
 </head>
 <body>
-    <div>
-        <button>Create Account</button>
+    <div id="buttons">
+        <div>
+            <button id="createAccountBtn">Create Account</button>
+        </div>
+        <div>
+            <input type="text" placeholder="Private Key" id="privateKey">
+            <button id="importAccountBtn">Import Account</button>
+        </div>
     </div>
-    <div>
-        <input type="text" placeholder="Private Key" id="privateKey">
-        <button id="importAccountBtn">Import Account</button>
-    </div>
-
     <div id="output" style="background-color: lightblue; min-height: 100px">
 
     </div>
@@ -25,9 +26,22 @@
     <script src="web3Functions.js"></script>
     <script>
        window.onload = function () {
-           document.getElementById('importAccountBtn').onclick = function () {
-               let key = document.getElementById('privateKey').value;
-               fillBalance(key);
+           let privateKey;
+           try{
+               privateKey = Android.getWallet();
+           }catch (e) {
+                privateKey = localStorage.getItem('privateKey');
+           }finally {
+               if(privateKey){
+                   fillBalance(privateKey, true);
+               }
+               document.getElementById('importAccountBtn').onclick = function () {
+                   let key = document.getElementById('privateKey').value;
+                   fillBalance(key, false);
+               };
+               document.getElementById('createAccountBtn').onclick = function () {
+                   fillBalance(null, false);
+               };
            }
        }
     </script>

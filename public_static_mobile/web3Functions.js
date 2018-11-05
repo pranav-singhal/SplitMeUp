@@ -15,19 +15,30 @@ function getDaiBalance(address) {
     });
 }
 
-function fillBalance(privateKey){
+function fillBalance(privateKey, old){
     let account;
     let $output = document.getElementById('output');
     if(privateKey){
         account = web3.eth.accounts.privateKeyToAccount(privateKey);
     }else{
         account = web3.eth.accounts.create();
+        privateKey = account.privateKey;
     }
-    let address = account.address;
-    getDaiBalance(address)
-        .then(function (balance) {
-            $output.innerHTML = "Your Dai Balance = " + balance;
-        });
+    try {
+        if(!old){
+            Android.storeWallet(privateKey);
+        }
+    }catch (e) {
+        if(!old){
+            localStorage.setItem('privateKey' , privateKey);
+        }
+    }finally {
+        let address = account.address;
+        getDaiBalance(address)
+            .then(function (balance) {
+                $output.innerHTML = "Your Dai Balance = " + balance;
+            });
+    }
 }
 
 function check() {
